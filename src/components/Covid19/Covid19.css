@@ -1,0 +1,17 @@
+.covid19-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #9c0606;
+    padding: 15px
+}
+
+.covid19-text,
+.covid19-link {
+    color: #fff;
+    margin: 0;
+}
+
+.covid19-link {
+
+}

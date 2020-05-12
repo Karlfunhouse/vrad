@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css'
 
+import Covid19 from '../Covid19/Covid19'
 import Header from '../Header/Header'
 import Login from '../Login/Login'
 import AreaContainer from '../AreaContainer/AreaContainer'
@@ -37,6 +38,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
+        <Covid19 />
         <Header />
         <Router>
           <Switch>
@@ -52,7 +54,8 @@ export default class App extends Component {
             exact
             render={() => {
               return <AreaContainer />
-            }} />
+            }} 
+            />
           </Switch>
 
           <Switch>
