@@ -25,11 +25,11 @@ export default class App extends Component {
 
   }
 
-  checkLogin = (info) => {
+  checkLogin = (userInfo) => {
     this.setState({
-      username: info.username,
-      email: info.email,
-      usage: info.usage,
+      username: userInfo.username,
+      email: userInfo.email,
+      usage: userInfo.usage,
       isLoggedIn: true
     })
   }
@@ -38,14 +38,39 @@ export default class App extends Component {
     return (
       <div>
         <Header />
+        <Router>
+          <Switch>
+            <Route path='/'
+            exact
+            render={() => {
+              return <Login checkLogin={this.checkLogin}/>
+            }} />
+          </Switch>
 
-        <Login checkLogin={this.checkLogin}/>
+          <Switch>
+            <Route path='/areas'
+            exact
+            render={() => {
+              return <AreaContainer />
+            }} />
+          </Switch>
 
-        <AreaContainer />
-
-        <ListingContainer />
-
-        <ListingInfo />
+          <Switch>
+            <Route path='/listings'
+            exact
+            render={() => {
+              return <ListingContainer />
+            }} />
+          </Switch>
+        
+          <Switch>
+            <Route path='/listings/id'
+            exact
+            render={() => {
+              return <ListingInfo />
+            }} />
+          </Switch>
+        </Router>
       </div>
     )
   }
