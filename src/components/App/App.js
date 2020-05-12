@@ -13,9 +13,15 @@ export default class App extends Component {
   constructor() {
     super()
     this.state = {
-
+      user: {
+        isLoggedIn: false,
+        name: '',
+        email: '',
+        usage: '',
+        favoriteListings: []
     }
   }
+}
 
   componentDidMount() {
 
@@ -27,7 +33,7 @@ export default class App extends Component {
         <Header />
 
         <Login />
-        
+
         <AreaContainer />
 
         <ListingContainer />
