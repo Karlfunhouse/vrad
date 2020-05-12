@@ -13,18 +13,25 @@ export default class App extends Component {
   constructor() {
     super()
     this.state = {
-      user: {
         isLoggedIn: false,
-        name: '',
+        username: '',
         email: '',
         usage: '',
-        favoriteListings: []
+        favoriteListings: [] 
     }
   }
-}
 
   componentDidMount() {
 
+  }
+
+  checkLogin = (info) => {
+    this.setState({
+      username: info.username,
+      email: info.email,
+      usage: info.usage,
+      isLoggedIn: true
+    })
   }
   
   render() {
@@ -32,7 +39,7 @@ export default class App extends Component {
       <div>
         <Header />
 
-        <Login />
+        <Login checkLogin={this.checkLogin}/>
 
         <AreaContainer />
 
