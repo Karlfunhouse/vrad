@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: center;
     background-color: #9c0606;
-    padding: 15px
+    padding: 15px;
 }
 
 .covid19-text,
@@ -12,6 +12,18 @@
     margin: 0;
 }
 
-.covid19-link {
+.covid19-close-btn {
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    opacity: .8;
+}
 
+.covid19-close-btn:hover {
+    opacity: 1;
+    transition: opacity .5s;
+}
+
+.hide {
+    display: none;
 }

@@ -29,10 +29,10 @@ export default class Login extends Component {
     const isComplete = email && username && usage ? null : 'disabled'
     return (
       <div className='login-container'>
-          <h2>Welcome! Please enter your info:</h2>
+          <h2 className='login-message'>Welcome! Please enter your info:</h2>
           <form className='login-form'>
-              <div>
-                  <label for='username'>Username: </label>
+              <div className='login-item'>
+                  <label for='username' className='input-label'>Username: </label>
                   <input 
                     type='text' 
                     placeholder='username'
@@ -41,8 +41,8 @@ export default class Login extends Component {
                     onChange={this.handleChange}
                   />
               </div>
-              <div>
-                  <label for='email'>Email: </label>
+              <div className='login-item'>
+                  <label for='email' className='input-label'>Email: </label>
                   <input 
                     type='email' 
                     placeholder='email' 
@@ -51,43 +51,50 @@ export default class Login extends Component {
                     onChange={this.handleChange}
                   />
               </div>
-              <div>
-                  <label for='usage'>What do you need a place for?</label>  
-                  <input 
-                    type='radio' 
-                    id='business' 
-                    name='usage' 
-                    value='business' 
-                    onClick={this.handleChange}
-                    required
-                  />
-                  <label for='business'>Business</label>
-                  <input 
-                    type='radio' 
-                    id='vacation' 
-                    name='usage' 
-                    value='vacation' 
-                    onClick={this.handleChange}
-                  />
-                  <label for='vacation'>Vacation</label>
-                  <input 
-                    type='radio' 
-                    id='party' 
-                    name='usage' 
-                    value='party' 
-                    onClick={this.handleChange}
-                  />
-                  <label for='party'>Party</label>
+              <div className='login-item'>
+                  <label for='usage'>What do you need a place for?</label>
+                  <div className='login-usage'>
+                    <label>
+                    <input 
+                        type='radio' 
+                        id='business' 
+                        name='usage' 
+                        value='business' 
+                        onClick={this.handleChange}
+                        required
+                      />
+                      Business:
+                    </label>
+                    <label>
+                      <input 
+                        type='radio' 
+                        id='vacation' 
+                        name='usage' 
+                        value='vacation' 
+                        onClick={this.handleChange}
+                      />
+                      Vacation
+                    </label> 
+                    <label>
+                      <input 
+                        type='radio' 
+                        id='party' 
+                        name='usage' 
+                        value='party' 
+                        onClick={this.handleChange}
+                      />
+                      Party
+                    </label>
+                  </div>
               </div>
-              <div>
-                 <Link to='/areas'>
-                      <button 
-                        type='submit' 
-                        onClick={this.handleSubmit} 
-                        disabled={isComplete}
-                      >ENTER
-                      </button>
-                  </Link>
+              <div className='login-item'>
+                  <button 
+                    type='submit'
+                    className='login-btn' 
+                    onClick={this.handleSubmit} 
+                    disabled={isComplete}
+                  >LOGIN
+                  </button>
               </div>
         </form>
       </div>

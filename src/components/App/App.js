@@ -18,13 +18,42 @@ export default class App extends Component {
         username: '',
         email: '',
         usage: '',
-        favoriteListings: [] 
+        favoriteListings: [],
+        listings: []
     }
   }
 
   componentDidMount() {
-
+    const url = 'https://vrad-api.herokuapp.com'
+    fetch(url + '/api/v1/areas')
+    .then(data => data.json())
+    .then(areas => {
+      const areasPromise = areas.areas.map(area => {
+        return fetch(url + area.details)
+        .then(data => data.json())
+        .then(listings => {
+          const listingPromise = listings.listings.map(listing => {
+            return fetch(url + listing)
+            .then(data => data.json())
+            .then(listing => this.setState({
+              listings: [
+                ...this.state.listings, {
+                  area: area.area,
+                  ...listings,
+                  listings: [
+                   
+                    listing
+                  ]
+                }
+              ]
+            }))
+            .then(() => console.log(this.state.listings))
+          }) 
+        })
+      })
+    })
   }
+
 
   checkLogin = (userInfo) => {
     this.setState({
