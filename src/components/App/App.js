@@ -9,6 +9,8 @@ import Login from '../Login/Login'
 import AreaContainer from '../AreaContainer/AreaContainer'
 import ListingContainer from '../ListingContainer/ListingContainer'
 import ListingInfo from '../ListingInfo/ListingInfo'
+import {fetchAreas, fetchListings} from '../../fetch'
+
 
 export default class App extends Component {
   constructor() {
@@ -23,9 +25,32 @@ export default class App extends Component {
     }
   }
 
-  componentDidMount() {
 
+      componentDidMount = () => {
+    const url = 'https://vrad-api.herokuapp.com'
+    fetch(url + '/api/v1/areas')
+    .then(response => response.json())
+    .then(areas => {
+      const promiseData = areas.areas.map(area => {
+        return fetch(url + area.details)
+          .then(response => response.json())
+          .then(details => {
+            return {
+              ...details,
+              area: area.area
+            }
+          })
+      })
+      Promise.all(promiseData)
+        .then(resolvedData => {
+          this.setState({areas: resolvedData})
+        })
+    })
+    .catch(err => console.error(err))
   }
+
+
+
 
   checkLogin = (userInfo) => {
     this.setState({
@@ -35,7 +60,7 @@ export default class App extends Component {
       isLoggedIn: true
     })
   }
-  
+
   render() {
     const { isLoggedIn } = this.state
 
@@ -43,45 +68,37 @@ export default class App extends Component {
       <div>
         <Covid19 />
         <Header />
-          <Switch>
             <Route path='/'
             exact
             render={() => {
               return <Login checkLogin={this.checkLogin}/>
             }} />
-          </Switch>
+
 
           {!isLoggedIn ?
            <Redirect to = "/"/>
           : <Redirect to = '/areas'/>}
 
-          <Switch>
             <Route path='/areas'
             exact
             render={() => {
               return <AreaContainer />
-            }} 
+            }}
             />
-          </Switch>
 
-          <Switch>
             <Route path='/listings'
             exact
             render={() => {
-              return <ListingContainer />
+              return <ListingContainer areas={this.state.areas}/>
             }} />
-          </Switch>
-        
-          <Switch>
+
             <Route path='/listings/id'
             exact
             render={() => {
               return <ListingInfo />
             }} />
-          </Switch>
+
       </div>
     )
   }
 }
-
-
