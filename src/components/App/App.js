@@ -23,8 +23,26 @@ export default class App extends Component {
     }
   }
 
-  componentDidMount() {
-
+  componentDidMount = () => {
+    const url = 'https://vrad-api.herokuapp.com'
+    fetch(url + '/api/v1/areas')
+    .then(response => response.json())
+    .then(areas => {
+      const promiseData = areas.areas.map(area => {
+        return fetch(url + area.details)
+          .then(response => response.json())
+          .then(details => {
+            return {
+              ...details,
+              area: area.area
+            }
+          })
+      })
+      console.log(promiseData);
+      Promise.all(promiseData)
+        .then(resolvedData => this.setState({areas: resolvedData}))
+    })
+    .catch(err => console.error(err))
   }
 
   checkLogin = (userInfo) => {
