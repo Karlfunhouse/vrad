@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import './App.css'
 
 import Covid19 from '../Covid19/Covid19'
@@ -19,41 +19,13 @@ export default class App extends Component {
         email: '',
         usage: '',
         favoriteListings: [],
-        listings: []
+        areas: []
     }
   }
 
   componentDidMount() {
-    const url = 'https://vrad-api.herokuapp.com'
-    fetch(url + '/api/v1/areas')
-    .then(data => data.json())
-    .then(areas => {
-      const areasPromise = areas.areas.map(area => {
-        return fetch(url + area.details)
-        .then(data => data.json())
-        .then(listings => {
-          const listingPromise = listings.listings.map(listing => {
-            return fetch(url + listing)
-            .then(data => data.json())
-            .then(listing => this.setState({
-              listings: [
-                ...this.state.listings, {
-                  area: area.area,
-                  ...listings,
-                  listings: [
-                   
-                    listing
-                  ]
-                }
-              ]
-            }))
-            .then(() => console.log(this.state.listings))
-          }) 
-        })
-      })
-    })
-  }
 
+  }
 
   checkLogin = (userInfo) => {
     this.setState({
@@ -65,11 +37,12 @@ export default class App extends Component {
   }
   
   render() {
+    const { isLoggedIn } = this.state
+
     return (
       <div>
         <Covid19 />
         <Header />
-        <Router>
           <Switch>
             <Route path='/'
             exact
@@ -77,6 +50,10 @@ export default class App extends Component {
               return <Login checkLogin={this.checkLogin}/>
             }} />
           </Switch>
+
+          {!isLoggedIn ?
+           <Redirect to = "/"/>
+          : <Redirect to = '/areas'/>}
 
           <Switch>
             <Route path='/areas'
@@ -102,7 +79,6 @@ export default class App extends Component {
               return <ListingInfo />
             }} />
           </Switch>
-        </Router>
       </div>
     )
   }

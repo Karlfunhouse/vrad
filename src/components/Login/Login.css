@@ -40,6 +40,7 @@ input {
     width: 30%;
     border-radius: 5px;
     align-self: center;
+    cursor: pointer;
 }
 
 .login-btn:hover {
