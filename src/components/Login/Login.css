@@ -8,8 +8,50 @@
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
 }
 
+.login-message {
+    color: #218fb1;
+}
+
 .login-form {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
+.login-item {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    padding: 10px;
+
+}
+
+input {
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.input-label {
+    text-align: left;
+}
+
+.login-btn {
+    padding: 10px;
+    width: 30%;
+    border-radius: 5px;
+    align-self: center;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background-color: #218fb1;
+    color: #fff;
+    transition: background-color .5s, color .5s;
+}
+
+.login-usage {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+

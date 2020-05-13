@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import './App.css'
 
 import Covid19 from '../Covid19/Covid19'
@@ -18,7 +18,8 @@ export default class App extends Component {
         username: '',
         email: '',
         usage: '',
-        favoriteListings: [] 
+        favoriteListings: [],
+        areas: []
     }
   }
 
@@ -36,11 +37,12 @@ export default class App extends Component {
   }
   
   render() {
+    const { isLoggedIn } = this.state
+
     return (
       <div>
         <Covid19 />
         <Header />
-        <Router>
           <Switch>
             <Route path='/'
             exact
@@ -48,6 +50,10 @@ export default class App extends Component {
               return <Login checkLogin={this.checkLogin}/>
             }} />
           </Switch>
+
+          {!isLoggedIn ?
+           <Redirect to = "/"/>
+          : <Redirect to = '/areas'/>}
 
           <Switch>
             <Route path='/areas'
@@ -73,7 +79,6 @@ export default class App extends Component {
               return <ListingInfo />
             }} />
           </Switch>
-        </Router>
       </div>
     )
   }
