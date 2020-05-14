@@ -4,11 +4,13 @@ import './AreaContainer.css'
 import Area from '../Area/Area'
 
 const AreaContainer = (props) => {
-  console.log(props)
   const areasInfo = props.areas.map(area => {
-    return <Area area={area} displayListings={props.displayListings}/>
+    return <Area 
+            area={area} 
+            key={area.id} 
+            displayListings={props.displayListings} 
+        />
     })
-
     return (
         <div className='area-container'>
             {areasInfo}

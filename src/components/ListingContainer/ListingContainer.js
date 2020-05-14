@@ -5,9 +5,12 @@ import Listing from '../Listing/Listing'
 
 const ListingContainer = (props) => {
   const allListings = props.listings.map(listing => {
-    return <Listing listing={listing}/>
+    return <Listing 
+        listing={listing} 
+        key={listing.id}
+        displayListing={props.displayListing}
+      />
   })
-  console.log(props)
     return (
         <div className="listing-container">
             {allListings}
