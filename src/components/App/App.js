@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Route, Switch, Redirect } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import './App.css'
 
 import UserInfo from '../UserInfo/UserInfo'
@@ -27,8 +27,7 @@ export default class App extends Component {
     }
   }
 
-      componentDidMount = () => {
-        console.log(imageData)
+  componentDidMount = () => {
     const url = 'https://vrad-api.herokuapp.com'
     fetch(url + '/api/v1/areas')
     .then(response => response.json())
@@ -56,14 +55,10 @@ export default class App extends Component {
    const url = 'https://vrad-api.herokuapp.com'
    const listingsPromises = listings.map(listing => {
      const images = Object.entries(imageData).find(item => {
-       console.log('listing', listing)
-       console.log('item', item)
        if (item[0] === listing.split('').splice(17).join('')) {
          return item[1]
        }
       })
-     //[[3, ['', '', ''], [8, ['','','']]]
-    //  listing.listing_id
      return fetch(url + listing)
      .then(response => response.json())
      .then(listing => {
@@ -81,7 +76,6 @@ export default class App extends Component {
  }
 
  displayListing = (listing) => {
-   console.log(listing)
   this.setState({listing: listing})
  }
 
@@ -105,60 +99,78 @@ export default class App extends Component {
   }
 
   render() {
-    const { isLoggedIn, listings, listing, username, usage, favoriteListings } = this.state
+    const { 
+      isLoggedIn, 
+      listings, 
+      listing, 
+      username, 
+      usage, 
+      favoriteListings, 
+      areas 
+    } = this.state
 
     return (
       <div>
         <Covid19 />
         <Header />
-        {isLoggedIn && <UserInfo logout={this.logout} username={username} usage={usage} favoriteListings={favoriteListings}/>}
-        <Route
-          path="/"
-          exact
-          render={() => {
-            return <Login checkLogin={this.checkLogin} />;
-          }}
-        />
+        {isLoggedIn && <UserInfo 
+            logout={this.logout} 
+            username={username} 
+            usage={usage} 
+            favoriteListings={favoriteListings}
+        />}
 
         {!isLoggedIn ? <Redirect to="/" /> : <Redirect to="/areas" />}
 
         {listings.length > 0 && <Redirect to="/listings" />}
 
         <Route
-          path="/areas"
+          path="/"
           exact
           render={() => {
             return (
-              
-              <AreaContainer
-                areas={this.state.areas}
-                displayListings={this.displayListings}
+              <Login 
+                checkLogin={this.checkLogin} 
               />
-            );
+            )
           }}
         />
-
+        <Route
+          path="/areas"
+          exact
+          render={() => {
+            return (  
+              <AreaContainer
+                areas={areas}
+                displayListings={this.displayListings}
+              />
+            )
+          }}
+        />
         <Route
           path="/listings"
           exact
           render={() => {
             return (
               <ListingContainer
-                listings={this.state.listings}
+                listings={listings}
                 displayListing={this.displayListing}
               />
-            );
+            )
           }}
         />
-
         <Route
           path="/listings/:listing_id"
           exact
           render={() => {
-            return <ListingInfo listing={this.state.listing} />;
+            return (
+              <ListingInfo 
+                listing={listing} 
+              />
+            )
           }}
         />
       </div>
-    );
+    )
   }
 }

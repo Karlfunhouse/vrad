@@ -19,9 +19,15 @@ class Covid19 extends Component {
     render() {
         return (
             <div className={this.state.display}>
-                <p className='covid19-text'>Get the latest on our COVID-19 response and cancellation policies.</p>
-                <a className='covid19-link' href='https://www.coronavirus.gov/' target='_blank'>Learn more</a>
-                <button className='covid19-close-btn' onClick={this.hide}>X</button>
+                <p className='covid19-text'>
+                    Get the latest on our COVID-19 response and cancellation policies.
+                </p>
+                <a className='covid19-link' href='https://www.coronavirus.gov/' target='_blank'>
+                    Learn more
+                </a>
+                <button className='covid19-close-btn' onClick={this.hide}>
+                    X
+                </button>
             </div>
         )
     }

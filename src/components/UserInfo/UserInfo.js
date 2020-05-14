@@ -3,8 +3,13 @@ import PropTypes from "prop-types";
 import "./UserInfo.css";
 
 const UserInfo = (props) => {
-   
-    const { username, usage, favoriteListings, logout } = props
+    const { 
+      username, 
+      usage,
+      favoriteListings, 
+      logout 
+    } = props
+    
     return (
       <div>
         <p className="user-info-text">
@@ -16,6 +21,6 @@ const UserInfo = (props) => {
     )
 }
 
-export default UserInfo;
+export default UserInfo
 
-UserInfo.propTypes = {};
+UserInfo.propTypes = {}
