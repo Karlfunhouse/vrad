@@ -21,7 +21,8 @@ export default class App extends Component {
         email: '',
         usage: '',
         favoriteListings: [],
-        areas: []
+        areas: [],
+        listings: []
     }
   }
 
@@ -51,7 +52,21 @@ export default class App extends Component {
 
 
  displayListings = (listings) => {
-   console.log(listings)
+   const url = 'https://vrad-api.herokuapp.com'
+   const listingsPromises = listings.map(listing => {
+     return fetch(url + listing)
+     .then(response => response.json())
+     .then(listing => {
+       return {
+         ...listing
+       }
+     })
+   })
+   Promise.all(listingsPromises)
+   .then(resolvedListings => {
+     this.setState({listings: resolvedListings})
+   })
+   .catch(err => console.error(err))
  }
 
   checkLogin = (userInfo) => {
