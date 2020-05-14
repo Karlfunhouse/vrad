@@ -56,18 +56,42 @@
 [class='Park Hill']:hover,
 .LoHi:hover,
 [class='Cap Hill']:hover {
-    filter: contrast(120%);
+    filter: contrast(140%);
     transition: filter .2s;
 }
 
 .area-info {
-    padding: 20px;
     text-align: center;
+}
+
+.area-name,
+.area-location,
+.area-about {
+    padding: 10px 20px;
+}
+
+.area-name:after {
+    content: " ";
+    display: block;
+    height: 2px;
+    background-color: #218fb1;
+    width: 100px;
+    margin: 10px auto 0;
 }
 
 .listings-btn {
     background-color: #218fb1;
-    padding: 20px;
+    padding: 15px;
     border: 0;
     border-radius: 0 0 7px 7px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.2rem;
+    opacity: .7;
 }
+
+.listings-btn:hover {
+    opacity: 1;
+    transition: opacity .5s;
+}
+
