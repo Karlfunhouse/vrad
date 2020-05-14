@@ -1,0 +1,21 @@
+.area-wrapper {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.area-area {
+    margin: auto;
+    font-size: 4rem;
+    color: #fff;
+}
+
+.RiNo,
+[class='Park Hill'],
+.LoHi,
+[class='Cap Hill'] {
+    display: flex;
+    height: 200px;
+    background-color: #f3f3f3;
+    padding: 20px;
+}

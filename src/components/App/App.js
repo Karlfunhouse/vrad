@@ -9,6 +9,8 @@ import Login from '../Login/Login'
 import AreaContainer from '../AreaContainer/AreaContainer'
 import ListingContainer from '../ListingContainer/ListingContainer'
 import ListingInfo from '../ListingInfo/ListingInfo'
+import {fetchAreas, fetchListings} from '../../fetch'
+
 
 export default class App extends Component {
   constructor() {
@@ -19,11 +21,13 @@ export default class App extends Component {
         email: '',
         usage: '',
         favoriteListings: [],
-        areas: []
+        areas: [],
+        listings: []
     }
   }
 
-  componentDidMount = () => {
+
+      componentDidMount = () => {
     const url = 'https://vrad-api.herokuapp.com'
     fetch(url + '/api/v1/areas')
     .then(response => response.json())
@@ -38,12 +42,32 @@ export default class App extends Component {
             }
           })
       })
-      console.log(promiseData);
       Promise.all(promiseData)
-        .then(resolvedData => this.setState({areas: resolvedData}))
+        .then(resolvedData => {
+          this.setState({areas: resolvedData})
+        })
     })
     .catch(err => console.error(err))
   }
+
+
+ displayListings = (listings) => {
+   const url = 'https://vrad-api.herokuapp.com'
+   const listingsPromises = listings.map(listing => {
+     return fetch(url + listing)
+     .then(response => response.json())
+     .then(listing => {
+       return {
+         ...listing
+       }
+     })
+   })
+   Promise.all(listingsPromises)
+   .then(resolvedListings => {
+     this.setState({listings: resolvedListings})
+   })
+   .catch(err => console.error(err))
+ }
 
   checkLogin = (userInfo) => {
     this.setState({
@@ -53,53 +77,49 @@ export default class App extends Component {
       isLoggedIn: true
     })
   }
-  
+
   render() {
-    const { isLoggedIn } = this.state
+    const { isLoggedIn, listings } = this.state
 
     return (
       <div>
         <Covid19 />
         <Header />
-          <Switch>
             <Route path='/'
             exact
             render={() => {
               return <Login checkLogin={this.checkLogin}/>
             }} />
-          </Switch>
+
 
           {!isLoggedIn ?
            <Redirect to = "/"/>
           : <Redirect to = '/areas'/>}
 
-          <Switch>
+          {listings.length > 0 &&
+           <Redirect to = "/listings"/>}
+
             <Route path='/areas'
             exact
             render={() => {
-              return <AreaContainer />
-            }} 
+              return <AreaContainer areas={this.state.areas}
+              displayListings={this.displayListings}/>
+            }}
             />
-          </Switch>
 
-          <Switch>
-            <Route path='/listings'
+          <Route path='/listings'
             exact
             render={() => {
-              return <ListingContainer />
+              return <ListingContainer listings={this.state.listings}/>
             }} />
-          </Switch>
-        
-          <Switch>
+
             <Route path='/listings/id'
             exact
             render={() => {
               return <ListingInfo />
             }} />
-          </Switch>
+
       </div>
     )
   }
 }
-
-
