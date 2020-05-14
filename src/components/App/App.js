@@ -101,9 +101,6 @@ export default class App extends Component {
           {listings.length > 0 &&
            <Redirect to = '/listings'/>}
 
-          {listing &&
-           <Redirect to = {`/listings/${listing.listing_id}`}/>}
-
             <Route path='/areas'
             exact
             render={() => {
