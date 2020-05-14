@@ -9,8 +9,6 @@ import Login from '../Login/Login'
 import AreaContainer from '../AreaContainer/AreaContainer'
 import ListingContainer from '../ListingContainer/ListingContainer'
 import ListingInfo from '../ListingInfo/ListingInfo'
-import {fetchAreas, fetchListings} from '../../fetch'
-
 
 export default class App extends Component {
   constructor() {
@@ -22,10 +20,10 @@ export default class App extends Component {
         usage: '',
         favoriteListings: [],
         areas: [],
-        listings: []
+        listings: [],
+        listing: null
     }
   }
-
 
       componentDidMount = () => {
     const url = 'https://vrad-api.herokuapp.com'
@@ -69,6 +67,11 @@ export default class App extends Component {
    .catch(err => console.error(err))
  }
 
+ displayListing = (listing) => {
+   console.log(listing)
+  this.setState({listing: listing})
+ }
+
   checkLogin = (userInfo) => {
     this.setState({
       username: userInfo.username,
@@ -79,7 +82,7 @@ export default class App extends Component {
   }
 
   render() {
-    const { isLoggedIn, listings } = this.state
+    const { isLoggedIn, listings, listing } = this.state
 
     return (
       <div>
@@ -91,32 +94,37 @@ export default class App extends Component {
               return <Login checkLogin={this.checkLogin}/>
             }} />
 
-
           {!isLoggedIn ?
            <Redirect to = "/"/>
           : <Redirect to = '/areas'/>}
 
           {listings.length > 0 &&
-           <Redirect to = "/listings"/>}
+           <Redirect to = '/listings'/>}
+
+          {listing &&
+           <Redirect to = {`/listings/${listing.listing_id}`}/>}
 
             <Route path='/areas'
             exact
             render={() => {
               return <AreaContainer areas={this.state.areas}
-              displayListings={this.displayListings}/>
+              displayListings={this.displayListings}
+              />
             }}
             />
 
           <Route path='/listings'
             exact
             render={() => {
-              return <ListingContainer listings={this.state.listings}/>
+              return <ListingContainer listings={this.state.listings}
+              displayListing={this.displayListing}
+              />
             }} />
 
-            <Route path='/listings/id'
+            <Route path='/listings/:listing_id'
             exact
             render={() => {
-              return <ListingInfo />
+              return <ListingInfo listing={this.state.listing}/>
             }} />
 
       </div>

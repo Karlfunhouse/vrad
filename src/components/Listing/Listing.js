@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import './Listing.css'
 
 const Listing = (props) => {
-  console.log(props.listing)
     const {name} = props.listing
     const {street, zip} = props.listing.address
     return (
@@ -15,11 +14,12 @@ const Listing = (props) => {
           />
           <h2 className='listing-name'>{name}</h2>
           <p className='listing-address'>{street}, {zip}, Denver</p>
-          <button 
-            className='listing-btn'
-          >
-            See Details
-          </button>
+            <button 
+              className='listing-btn'
+              onClick={() => props.displayListing(props.listing)}
+            >
+              See Details
+            </button>
         </div>
     )
 }
