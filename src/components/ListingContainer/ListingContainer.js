@@ -9,8 +9,7 @@ const ListingContainer = (props) => {
   })
   console.log(props)
     return (
-
-        <div className="areas-container">Listing Container
+        <div className="listing-container">
             {allListings}
         </div>
     )

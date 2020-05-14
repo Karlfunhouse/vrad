@@ -10,7 +10,7 @@ const AreaContainer = (props) => {
     })
 
     return (
-        <div>AreaContainer
+        <div className='area-container'>
             {areasInfo}
         </div>
     )

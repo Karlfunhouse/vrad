@@ -3,15 +3,23 @@ import PropTypes from 'prop-types'
 import './Area.css'
 
 const Area = (props) => {
-  console.log(props);
+    const { area, name, location, about, listings} = props.area
     return (
-        <div>
-          <div className={props.area.area}></div>
-          <h1>{props.area.area}</h1>
-          <h2>{props.area.name}</h2>
-          <h3>{props.area.location}</h3>
-          <h4>{props.area.about}</h4>
-          <button onClick={() => props.displayListings(props.area.listings)}>See Listings</button>
+        <div className='area-wrapper'>
+          <div className={area}>
+            <h2 className='area-area'>{area}</h2>
+          </div>
+          <div className='area-info'>
+            <h2 className='area-name'>{name}</h2>
+            <p className='area-location'>{location}</p>
+            <p className='area-about'>{about}</p>
+          </div>
+          <button 
+            className='listings-btn'
+            onClick={() => props.displayListings(listings)}
+          >
+            See Listings
+          </button>
         </div>
     )
 }

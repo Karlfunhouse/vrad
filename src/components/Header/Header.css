@@ -1,7 +1,9 @@
 .header-container {
-    background-image: linear-gradient(rgba(27, 27, 27, 0.425), rgba(34, 34, 34, 0.9)),
+    background-image: linear-gradient(rgba(27, 27, 27, 0.2), rgba(34, 34, 34, 0.2)),
     url('https://assets.aptamigo.com/CO/Denver/Pages/rino-apartments/rino-web.jpg');
     background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
     height: 40vh;
     display: flex;
 }
