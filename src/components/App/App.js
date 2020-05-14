@@ -9,6 +9,7 @@ import Login from '../Login/Login'
 import AreaContainer from '../AreaContainer/AreaContainer'
 import ListingContainer from '../ListingContainer/ListingContainer'
 import ListingInfo from '../ListingInfo/ListingInfo'
+import imageData from '../../imageData'
 
 export default class App extends Component {
   constructor() {
@@ -26,6 +27,7 @@ export default class App extends Component {
   }
 
       componentDidMount = () => {
+        console.log(imageData)
     const url = 'https://vrad-api.herokuapp.com'
     fetch(url + '/api/v1/areas')
     .then(response => response.json())
@@ -52,12 +54,22 @@ export default class App extends Component {
  displayListings = (listings) => {
    const url = 'https://vrad-api.herokuapp.com'
    const listingsPromises = listings.map(listing => {
+     const images = Object.entries(imageData).find(item => {
+       console.log('listing', listing)
+       console.log('item', item)
+       if (item[0] === listing.split('').splice(17).join('')) {
+         return item[1]
+       }
+      })
+     //[[3, ['', '', ''], [8, ['','','']]]
+    //  listing.listing_id
      return fetch(url + listing)
      .then(response => response.json())
      .then(listing => {
        return {
-         ...listing
-       }
+         ...listing,
+         img: images[1]
+       };
      })
    })
    Promise.all(listingsPromises)

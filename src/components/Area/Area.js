@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import './Area.css'
 
 const Area = (props) => {
-    const { area, name, location, about, listings} = props.area
+    const { area, name, location, about, listings, id} = props.area
     return (
         <div className='area-wrapper'>
           <div className={area}>
