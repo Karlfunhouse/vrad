@@ -1,7 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 .area-wrapper {
     background-color: #fff;
+    height: auto;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    border-radius: 7px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
 }
 
 .area-area {
@@ -18,4 +27,47 @@
     height: 200px;
     background-color: #f3f3f3;
     padding: 20px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 7px 7px 0 0;
+}
+
+.RiNo {
+    background-image: linear-gradient(rgba(44, 44, 44, 0.2), rgba(58, 58, 58, 0.2)),
+    url('https://cornerstoneapartments.com/wp-content/uploads/2019/03/Rino-IMG_3340-2-768x768.jpg');
+}
+
+[class='Park Hill'] {
+    background-image: linear-gradient(rgba(44, 44, 44, 0.2), rgba(58, 58, 58, 0.2)),
+    url('https://3ffb20d6eafb05bffcbf-a7fc0a41f7029defdd3e09482435991b.ssl.cf1.rackcdn.com/properties/photos/f6692a075a2e6e65d37abd5620df4e8a.jpg')
+}
+
+.LoHi {
+    background-image: linear-gradient(rgba(44, 44, 44, 0.2), rgba(58, 58, 58, 0.2)),
+    url('https://images.squarespace-cdn.com/content/v1/5bcdedd09d414940eeb40005/1562035539874-3M7X8LTNY1YU0OM1077E/ke17ZwdGBToddI8pDm48kLkXF2pIyv_F2eUT9F60jBl7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0iyqMbMesKd95J-X4EagrgU9L3Sa3U8cogeb0tjXbfawd0urKshkc5MgdBeJmALQKw/denver+commercial+photographer+for+apartment+building+lifestyle+photos+in+lohi+jefferson+park+-DSD06481-Edit-2.jpg');
+}
+
+[class='Cap Hill'] {
+    background-image: linear-gradient(rgba(44, 44, 44, 0.2), rgba(58, 58, 58, 0.2)),
+    url('https://www.coloradorealestatediary.com/wp-content/uploads/2016/08/1022-Pearl-Street-101-MLS_Size-001-13-Exterior-2048x1536-72dpi.jpg')
+}
+
+.RiNo:hover,
+[class='Park Hill']:hover,
+.LoHi:hover,
+[class='Cap Hill']:hover {
+    filter: contrast(120%);
+    transition: filter .2s;
+}
+
+.area-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.listings-btn {
+    background-color: #218fb1;
+    padding: 20px;
+    border: 0;
+    border-radius: 0 0 7px 7px;
 }
