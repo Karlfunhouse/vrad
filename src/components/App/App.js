@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import './App.css'
 
+import UserInfo from '../UserInfo/UserInfo'
 import Covid19 from '../Covid19/Covid19'
 import Header from '../Header/Header'
 import Login from '../Login/Login'
@@ -93,50 +94,71 @@ export default class App extends Component {
     })
   }
 
+  logout = () => {
+    this.setState({
+      username: '',
+      email: '',
+      usage: '',
+      favoriteListings: [],
+      isLoggedIn: false
+    })
+  }
+
   render() {
-    const { isLoggedIn, listings, listing } = this.state
+    const { isLoggedIn, listings, listing, username, usage, favoriteListings } = this.state
 
     return (
       <div>
         <Covid19 />
         <Header />
-            <Route path='/'
-            exact
-            render={() => {
-              return <Login checkLogin={this.checkLogin}/>
-            }} />
+        {isLoggedIn && <UserInfo logout={this.logout} username={username} usage={usage} favoriteListings={favoriteListings}/>}
+        <Route
+          path="/"
+          exact
+          render={() => {
+            return <Login checkLogin={this.checkLogin} />;
+          }}
+        />
 
-          {!isLoggedIn ?
-           <Redirect to = "/"/>
-          : <Redirect to = '/areas'/>}
+        {!isLoggedIn ? <Redirect to="/" /> : <Redirect to="/areas" />}
 
-          {listings.length > 0 &&
-           <Redirect to = '/listings'/>}
+        {listings.length > 0 && <Redirect to="/listings" />}
 
-            <Route path='/areas'
-            exact
-            render={() => {
-              return <AreaContainer areas={this.state.areas}
-              displayListings={this.displayListings}
+        <Route
+          path="/areas"
+          exact
+          render={() => {
+            return (
+              
+              <AreaContainer
+                areas={this.state.areas}
+                displayListings={this.displayListings}
               />
-            }}
-            />
+            );
+          }}
+        />
 
-          <Route path='/listings'
-            exact
-            render={() => {
-              return <ListingContainer listings={this.state.listings}
-              displayListing={this.displayListing}
+        <Route
+          path="/listings"
+          exact
+          render={() => {
+            return (
+              <ListingContainer
+                listings={this.state.listings}
+                displayListing={this.displayListing}
               />
-            }} />
+            );
+          }}
+        />
 
-            <Route path='/listings/:listing_id'
-            exact
-            render={() => {
-              return <ListingInfo listing={this.state.listing}/>
-            }} />
-
+        <Route
+          path="/listings/:listing_id"
+          exact
+          render={() => {
+            return <ListingInfo listing={this.state.listing} />;
+          }}
+        />
       </div>
-    )
+    );
   }
 }
