@@ -79,7 +79,7 @@ export default class App extends Component {
   }
 
   render() {
-    const { isLoggedIn } = this.state
+    const { isLoggedIn, listings } = this.state
 
     return (
       <div>
@@ -96,6 +96,9 @@ export default class App extends Component {
            <Redirect to = "/"/>
           : <Redirect to = '/areas'/>}
 
+          {listings.length > 0 &&
+           <Redirect to = "/listings"/>}
+
             <Route path='/areas'
             exact
             render={() => {
@@ -104,10 +107,10 @@ export default class App extends Component {
             }}
             />
 
-            <Route path='/listings'
+          <Route path='/listings'
             exact
             render={() => {
-              return <ListingContainer />
+              return <ListingContainer listings={this.state.listings}/>
             }} />
 
             <Route path='/listings/id'

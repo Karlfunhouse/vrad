@@ -5,7 +5,11 @@ import './Listing.css'
 const Listing = (props) => {
 
     return (
-        <div>Listing</div>
+        <div>
+          <h2>{props.listing.name}</h2>
+          <h2>{props.listing.address.street}, {props.listing.address.zip}</h2>
+
+        </div>
     )
 }
 
