@@ -4,8 +4,11 @@ import './ListingContainer.css'
 import Listing from '../Listing/Listing'
 
 const ListingContainer = () => {
+
+  
     return (
-        <div>ListingContainer
+
+        <div className="areas-container">
             <Listing />
         </div>
     )

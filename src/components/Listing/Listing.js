@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './Listing.css'
 
-const Listing = () => {
+const Listing = (props) => {
+
     return (
         <div>Listing</div>
     )

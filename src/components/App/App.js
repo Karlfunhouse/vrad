@@ -50,7 +50,9 @@ export default class App extends Component {
   }
 
 
-
+ displayListings = (listings) => {
+   console.log(listings)
+ }
 
   checkLogin = (userInfo) => {
     this.setState({
@@ -82,14 +84,15 @@ export default class App extends Component {
             <Route path='/areas'
             exact
             render={() => {
-              return <AreaContainer />
+              return <AreaContainer areas={this.state.areas}
+              displayListings={this.displayListings}/>
             }}
             />
 
             <Route path='/listings'
             exact
             render={() => {
-              return <ListingContainer areas={this.state.areas}/>
+              return <ListingContainer />
             }} />
 
             <Route path='/listings/id'
