@@ -14,12 +14,14 @@ const Listing = (props) => {
           />
           <h2 className='listing-name'>{name}</h2>
           <p className='listing-address'>{street}, {zip}, Denver</p>
+         
             <button 
               className='listing-btn'
               onClick={() => props.displayListing(props.listing)}
             >
               See Details
             </button>
+        
         </div>
     )
 }
