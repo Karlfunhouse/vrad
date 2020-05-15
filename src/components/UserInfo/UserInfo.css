@@ -1,0 +1,57 @@
+.user-container {
+    background-color: #fff;
+}
+
+.user-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    padding: 15px 0;
+    font-size: 1.2rem;
+    align-items: center;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.usage { 
+    color: #218fb1;
+    font-weight: bold;
+}
+
+.btn-wrapper {
+    
+}
+
+.favorite-btn,
+.logout-btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    align-self: center;
+    cursor: pointer;
+    border: 2px solid #218fb1;
+    font-size: 1.2rem;
+    font-weight: bold;
+    opacity: .8;
+}
+
+.favorite-btn {
+    background-color: #218fb1;
+    color: #fff;
+    margin-right: 30px;
+}
+
+.logout-btn {
+    color: #218fb1;
+}
+
+.favorite-btn:hover ,
+.logout-btn:hover {
+    opacity: 1;
+    transition: opacity .5s;
+}
+
+.logout-btn:hover {
+    color: #fff;
+    background-color: #218fb1;
+    transition: color .5s, background-color .5s;
+}

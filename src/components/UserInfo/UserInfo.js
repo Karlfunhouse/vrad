@@ -11,12 +11,26 @@ const UserInfo = (props) => {
     } = props
     
     return (
-      <div>
-        <p className="user-info-text">
-          Welcome {username}, we hope you find something for your {usage} needs. You have {favoriteListings.length} favorite listings.
-        </p>
-        
-            <button onClick={logout}>Logout</button>
+      <div className='user-container'>
+        <div className='user-wrapper'>
+          <p className="user-message">
+            Welcome {username}, we hope you find something for your 
+            <span className='usage'> {usage}</span> needs. 
+          </p>
+          <div className='btn-wrapper'>
+          <button 
+            className='favorite-btn'
+          >
+            Favorite Listings: {favoriteListings.length}
+          </button>
+          <button 
+            className='logout-btn'
+            onClick={logout}
+          >
+            Logout
+          </button>
+          </div>
+        </div>
       </div>
     )
 }
@@ -24,3 +38,4 @@ const UserInfo = (props) => {
 export default UserInfo
 
 UserInfo.propTypes = {}
+ 

@@ -13,10 +13,12 @@
 }
 
 .covid19-close-btn {
+    font-weight: bold;
     position: absolute;
     right: 15px;
     cursor: pointer;
     opacity: .8;
+    padding: 3px 5px;
 }
 
 .covid19-close-btn:hover {
