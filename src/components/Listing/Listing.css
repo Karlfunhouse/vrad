@@ -15,6 +15,7 @@
 
 .listing-img {
     border-radius: 7px 7px 0 0;
+    width: 100%;
 }
 
 .listing-name,
@@ -34,6 +35,7 @@
 
 .listing-btn {
     background-color: #218fb1;
+    width: 100%;
     padding: 15px;
     border: 0;
     border-radius: 0 0 7px 7px;

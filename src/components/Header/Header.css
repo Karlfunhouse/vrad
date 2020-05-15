@@ -10,7 +10,21 @@
 
 h1 {
     margin: auto;
-    font-size: 4rem;
+    font-size: 2rem;
     cursor: pointer;
     color: #fff;
+    width: 90%;
+    text-align: center;
+}
+
+@media (min-width: 640px) {
+    h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    h1 {
+        font-size: 4rem;
+    }
 }
