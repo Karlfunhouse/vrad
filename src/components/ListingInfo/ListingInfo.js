@@ -5,13 +5,12 @@ import './ListingInfo.css'
 const ListingInfo = (props) => {
     console.log(props.listing)
     const images = props.listing.img.map(img => {
-        console.log(img)
-        return <img src={`../../../../public/images/${img}`} />
+        return <img alt='' src={`/images/${img}`} />
     })
     const { area, area_id } = props.listing 
     const { baths, beds, cost_per_night, superhost} = props.listing.details
     return (
-        <div>ListingInfo
+        <div className='listing-info-container'>
             <div>
                 { images }
             </div>

@@ -6,7 +6,6 @@
     display: flex;
     justify-content: space-between;
     width: 90%;
-    padding: 15px 0;
     font-size: 1.2rem;
     align-items: center;
     margin: auto;
@@ -18,8 +17,9 @@
     font-weight: bold;
 }
 
-.btn-wrapper {
-    
+.btn-wrapper,
+.user-message {
+    padding: 15px 0;
 }
 
 .favorite-btn,
