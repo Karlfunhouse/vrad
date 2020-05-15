@@ -10,16 +10,38 @@ const ListingInfo = (props) => {
         className='listing-info-img'
         src={`/images/${img}`} />
     })
-    const { area, area_id } = props.listing 
-    const { baths, beds, cost_per_night, superhost} = props.listing.details
+    const { 
+        name, 
+        address, 
+        area, 
+        listing_id, 
+        details 
+    } = props.listing 
+    const { 
+        street, 
+        zip 
+    } = address
+    const { 
+        baths, 
+        beds, 
+        cost_per_night, 
+        superhost
+    } = details
+    
     return (
         <div className='listing-info-container'>
-            <p>Area: {area}</p>
-            <p>Area Id: {area_id}</p>
-            <p>Bath: {baths}</p>
-            <p>Beds: {beds}</p>
-            <p>$ {cost_per_night}</p>
-            <p>Superhost: {superhost}</p>
+            <div className='listing-info'>
+                <h2>{name}</h2>
+                <p>{area}</p>
+                <p>{`${street}, ${zip}, Denver`}</p>
+
+                <p>Bath: {baths}</p>
+                <p>Beds: {beds}</p>
+                <p>$ {cost_per_night}</p>
+                <p>Superhost: {superhost}</p>
+                
+                <p>Listing ID: {listing_id}</p>
+            </div>
             <div className='slide-gallery'>
                 <figure className='slider'>
                     { images }

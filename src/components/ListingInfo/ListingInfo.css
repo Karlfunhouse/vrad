@@ -1,7 +1,19 @@
 .listing-info-container {
     width: 90%;
-    margin: auto;
+    margin: 50px auto;
+    display: grid;
+    grid-template: auto / repeat(2, 1fr);
+    grid-gap: 50px;
 }
+
+.listing-info {
+    background-color: #fff;
+    padding: 50px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 7px;
+    text-align: center;
+}
+
 
 @keyframes slidy {
     0% { left: 0%; }
@@ -17,9 +29,11 @@
     
 
 .slide-gallery {
-    width: 50%; 
+    width: 100%; 
     overflow: hidden; 
     height: 400px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 7px;
 }
 
 .slider {
@@ -30,8 +44,8 @@
 }
 
 .listing-info-img {
-    width: 30%; 
-    height: auto;
+    height: 100%;
+    width: 30%;
     display: inline-block;  
     position: inherit;
 }

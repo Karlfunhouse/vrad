@@ -4,13 +4,13 @@ import './Listing.css'
 import { Link } from 'react-router-dom'
 
 const Listing = (props) => {
-    const {name, address, listing_id} = props.listing
+    const {name, address, listing_id, img} = props.listing
     const {street, zip} = address
     return (
         <div className='listing-wrapper'>
           <img
             className='listing-img'
-            src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTSfyCWXnhEyzHMXgC13e1JCHct2Mk6ZvrVmQaojy8Y8uhZo41M&usqp=CAU'
+            src={`/images/${img[Math.floor(Math.random() * img.length)]}`}
             alt=''
           />
           <h2 className='listing-name'>{name}</h2>

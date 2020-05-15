@@ -32,6 +32,7 @@
     font-size: 1.2rem;
     font-weight: bold;
     opacity: .8;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
 }
 
 .favorite-btn {
