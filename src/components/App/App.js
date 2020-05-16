@@ -78,6 +78,10 @@ export default class App extends Component {
                    this.setState({ listing: listing });
                  };
 
+                 displayFavorites = (favoriteListings) => {
+                   
+                 }
+
                  checkLogin = (userInfo) => {
                    this.setState({
                      username: userInfo.username,
@@ -169,6 +173,18 @@ export default class App extends Component {
                            return (
                              <ListingContainer
                                listings={listings}
+                               displayListing={this.displayListing}
+                             />
+                           );
+                         }}
+                       />
+                       <Route
+                         path="/favorites"
+                         exact
+                         render={() => {
+                           return (
+                             <ListingContainer
+                               listings={favoriteListings}
                                displayListing={this.displayListing}
                              />
                            );
