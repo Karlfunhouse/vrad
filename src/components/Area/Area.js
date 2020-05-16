@@ -23,7 +23,7 @@ const Area = (props) => {
             <p className='area-about'>{about}</p>
           </div>
           <Link 
-            to = {`/areas/${area + '/listings'}`}
+            to = {`/areas/${area.replace(/\s/g, '')}/listings`}
             onClick={() => props.displayListings(listings)}>
             <button 
               className='listings-btn'

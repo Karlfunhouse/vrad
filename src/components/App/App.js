@@ -155,7 +155,7 @@ export default class App extends Component {
           }}
         />
         <Route
-          path="/areas/:area"
+          path="/areas/:area/listings"
           exact
           render={() => {
             return (
@@ -167,7 +167,7 @@ export default class App extends Component {
           }}
         />
         <Route
-          path="/listings/:listing_id"
+          path="/areas/:listing_id/listings/:listing_id"
           exact
           render={() => {
             return (
