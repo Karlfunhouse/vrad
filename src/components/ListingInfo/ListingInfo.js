@@ -31,16 +31,14 @@ const ListingInfo = (props) => {
     return (
         <div className='listing-info-container'>
             <div className='listing-info'>
-                <h2>{name}</h2>
-                <p>{area}</p>
-                <p>{`${street}, ${zip}, Denver`}</p>
-
-                <p>Bath: {baths}</p>
-                <p>Beds: {beds}</p>
-                <p>$ {cost_per_night}</p>
-                <p>Superhost: {superhost}</p>
-                
-                <p>Listing ID: {listing_id}</p>
+                <h2 className='listing-info-name'>{name}</h2>
+                <p className='listing-info-p'>Area: {area}</p>
+                <p className='listing-info-p'>Address: {`${street}, ${zip}, Denver`}</p>
+                <p className='listing-info-p'>Bath: {baths}</p>
+                <p className='listing-info-p'>Beds: {beds}</p>
+                <p className='listing-info-p'>${cost_per_night} / night</p>
+                <p className='listing-info-p'>Superhost: {superhost}</p>  
+                <p className='listing-info-p'>Listing ID: {listing_id}</p>
             </div>
             <div className='slide-gallery'>
                 <figure className='slider'>

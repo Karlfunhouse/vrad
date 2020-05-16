@@ -14,6 +14,17 @@
     text-align: center;
 }
 
+.listing-info-name {
+    color: #218fb1;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.listing-info-p {
+    font-size: 1.2rem;
+}
+
 @keyframes slidy {
     0% { left: 0%; }
     20% { left: 0%; }
@@ -32,18 +43,23 @@
     height: 400px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
     border-radius: 7px;
+    background-color: #fff;
+    background-image: linear-gradient(rgba(27, 27, 27, 0.2), rgba(34, 34, 34, 0.2)),
+    url('https://assets.aptamigo.com/CO/Denver/Pages/rino-apartments/rino-web.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 .slider {
     position: relative; 
-    width: 500%;
+    width: 300%;
     font-size: 0; 
     animation: 10s slidy infinite; 
 }
 
 .listing-info-img {
     height: 400px;
-    width: 30%;
+    width: calc(100%  /3);
     display: inline-block;  
     position: inherit;
 }
