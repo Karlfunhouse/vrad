@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "./UserInfo.css";
+import { Link } from "react-router-dom"
 
 const UserInfo = (props) => {
     const { 
@@ -18,11 +19,13 @@ const UserInfo = (props) => {
             <span className='usage'> {usage}</span> needs. 
           </p>
           <div className='btn-wrapper'>
-          <button 
-            className='favorite-btn'
-          >
-            {"\u2764"} Favorite Listings: {favoriteListings.length}
-          </button>
+          <Link to="/favorites">
+            <button 
+              className='favorite-btn' disabled={favoriteListings.length>0 ? null : "disabled"}
+            >
+              {"\u2764"} {!favoriteListings.length? "No Favorite Listings" : `Favorite Listings: ${favoriteListings.length}`}
+            </button>
+          </Link>
           <button 
             className='logout-btn'
             onClick={logout}
