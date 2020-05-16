@@ -12,6 +12,9 @@
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
     border-radius: 7px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .listing-info-name {
@@ -21,8 +24,22 @@
     margin-bottom: 30px;
 }
 
+.listing-info-name:after {
+    content: " ";
+    display: block;
+    height: 2px;
+    background-color: #218fb1;
+    width: 100px;
+    margin: 10px auto 0;
+}
+
 .listing-info-p {
     font-size: 1.2rem;
+}
+
+.info-accent {
+    color: #218fb1;
+    font-weight: bold;
 }
 
 @keyframes slidy {

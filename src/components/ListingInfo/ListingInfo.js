@@ -32,13 +32,27 @@ const ListingInfo = (props) => {
         <div className='listing-info-container'>
             <div className='listing-info'>
                 <h2 className='listing-info-name'>{name}</h2>
-                <p className='listing-info-p'>Area: {area}</p>
-                <p className='listing-info-p'>Address: {`${street}, ${zip}, Denver`}</p>
-                <p className='listing-info-p'>Bath: {baths}</p>
-                <p className='listing-info-p'>Beds: {beds}</p>
-                <p className='listing-info-p'>${cost_per_night} / night</p>
-                <p className='listing-info-p'>Superhost: {superhost}</p>  
-                <p className='listing-info-p'>Listing ID: {listing_id}</p>
+                <p className='listing-info-p'>
+                    Area: <span className='info-accent'>{area}</span>
+                </p>
+                <p className='listing-info-p'>
+                    Address: <span className='info-accent'>{`${street}, ${zip}, Denver`}</span>
+                </p>
+                <p className='listing-info-p'>
+                    Bath: <span className='info-accent'>{baths}</span>
+                </p>
+                <p className='listing-info-p'>
+                    Beds: <span className='info-accent'>{beds}</span>
+                </p>
+                <p className='listing-info-p'>
+                    <span className='info-accent'>${cost_per_night}</span> / night
+                </p>
+                <p className='listing-info-p'>
+                    Superhost: <span className='info-accent'>{superhost ? 'Yes' : 'No'}</span>
+                </p>  
+                <p className='listing-info-p'>
+                    Listing ID: <span className='info-accent'>{listing_id}</span>
+                </p>
             </div>
             <div className='slide-gallery'>
                 <figure className='slider'>
