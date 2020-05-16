@@ -14,7 +14,8 @@ const ListingInfo = (props) => {
         address, 
         area, 
         listing_id, 
-        details 
+        details,
+        favorite
     } = props.listing 
     const { 
         street, 
@@ -34,7 +35,7 @@ const ListingInfo = (props) => {
                     className='favorite-btn'
                     onClick={() => props.addFavoriteListing(props.listing)}
                 >
-                    {"\u2764"} Add to Favorite
+                    {"\u2764"} {favorite ? "Remove from Favorites" : "Add to Favorites"}
                 </button>
                 <button className='back-listings-btn'>Back To Listings</button>
                 <button className='back-areas-btn'>Back To Areas</button>
