@@ -1,9 +1,42 @@
+.listing-info-nav {
+    margin: 20px auto;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.back-listings-btn,
+.back-areas-btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    align-self: center;
+    cursor: pointer;
+    border: 2px solid #218fb1;
+    font-size: 1.2rem;
+    font-weight: bold;
+    opacity: .8;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
+    color: #218fb1;
+}
+
+.back-listings-btn:hover,
+.back-areas-btn:hover {
+    opacity: 1;
+    color: #fff;
+    background-color: #218fb1;
+    transition: color .5s, background-color .5s, opacity .5s;
+}
+
+.back-listings-btn {
+    margin-right: 30px;
+}
+
 .listing-info-container {
     width: 90%;
     margin: 50px auto;
     display: grid;
-    grid-template: auto / repeat(2, 1fr);
     grid-gap: 50px;
+    grid-template: auto / repeat(1, 1fr);
 }
 
 .listing-info {
@@ -12,8 +45,35 @@
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
     border-radius: 7px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
+.listing-info-name {
+    color: #218fb1;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.listing-info-name:after {
+    content: " ";
+    display: block;
+    height: 2px;
+    background-color: #218fb1;
+    width: 100px;
+    margin: 10px auto 0;
+}
+
+.listing-info-p {
+    font-size: 1.2rem;
+}
+
+.info-accent {
+    color: #218fb1;
+    font-weight: bold;
+}
 
 @keyframes slidy {
     0% { left: 0%; }
@@ -27,26 +87,48 @@
     100% { left: -400%; }
     }
     
-
 .slide-gallery {
     width: 100%; 
     overflow: hidden; 
     height: 400px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
     border-radius: 7px;
+    background-color: #fff;
+    background-image: linear-gradient(rgba(27, 27, 27, 0.2), rgba(34, 34, 34, 0.2)),
+    url('https://assets.aptamigo.com/CO/Denver/Pages/rino-apartments/rino-web.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 .slider {
     position: relative; 
-    width: 500%;
+    width: 300%;
     font-size: 0; 
     animation: 10s slidy infinite; 
 }
 
 .listing-info-img {
-    height: 100%;
-    width: 30%;
+    height: 400px;
+    width: calc(100%  /3);
     display: inline-block;  
     position: inherit;
 }
 
+@media (min-width: 640px) {
+    .listing-info-container {
+        width: 80%;
+    }
+}
+
+@media (min-width: 768px) {
+    .listing-info-container {
+        width: 70%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .listing-info-container {
+        grid-template: auto / repeat(2, 1fr);
+        width: 90%;
+    }
+}

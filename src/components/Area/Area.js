@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 import './Area.css'
 
 const Area = (props) => {
@@ -21,12 +22,15 @@ const Area = (props) => {
             <p className='area-location'>{location}</p>
             <p className='area-about'>{about}</p>
           </div>
-          <button 
-            className='listings-btn'
-            onClick={() => props.displayListings(listings)}
-          >
-            See Listings
-          </button>
+          <Link 
+            to = {`/areas/${area.replace(/\s/g, '')}/listings`}
+            onClick={() => props.displayListings(listings)}>
+            <button 
+              className='listings-btn'
+            >
+              See Listings
+            </button>
+          </Link>
         </div>
     )
 }

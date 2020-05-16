@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import './ListingInfo.css'
 
 const ListingInfo = (props) => {
-    console.log(props.listing)
     const images = props.listing.img.map(img => {
         return <img 
         alt='' 
@@ -29,25 +28,49 @@ const ListingInfo = (props) => {
     } = details
     
     return (
-        <div className='listing-info-container'>
-            <div className='listing-info'>
-                <h2>{name}</h2>
-                <p>{area}</p>
-                <p>{`${street}, ${zip}, Denver`}</p>
-
-                <p>Bath: {baths}</p>
-                <p>Beds: {beds}</p>
-                <p>$ {cost_per_night}</p>
-                <p>Superhost: {superhost}</p>
-                
-                <p>Listing ID: {listing_id}</p>
+        <section>
+            <nav className='listing-info-nav'>
+                <button 
+                    className='favorite-btn'
+                    onClick={() => props.addFavoriteListing(props.listing)}
+                >
+                    {"\u2764"} Add to Favorite
+                </button>
+                <button className='back-listings-btn'>Back To Listings</button>
+                <button className='back-areas-btn'>Back To Areas</button>
+            </nav>
+            <div className='listing-info-container'>
+                <div className='listing-info'>
+                    <h2 className='listing-info-name'>{name}</h2>
+                    <p className='listing-info-p'>
+                        Area: <span className='info-accent'>{area}</span>
+                    </p>
+                    <p className='listing-info-p'>
+                        Address: <span className='info-accent'>{`${street}, ${zip}, Denver`}</span>
+                    </p>
+                    <p className='listing-info-p'>
+                        Bath: <span className='info-accent'>{baths}</span>
+                    </p>
+                    <p className='listing-info-p'>
+                        Beds: <span className='info-accent'>{beds}</span>
+                    </p>
+                    <p className='listing-info-p'>
+                        <span className='info-accent'>${cost_per_night}</span> / night
+                    </p>
+                    <p className='listing-info-p'>
+                        Superhost: <span className='info-accent'>{superhost ? 'Yes' : 'No'}</span>
+                    </p>  
+                    <p className='listing-info-p'>
+                        Listing ID: <span className='info-accent'>{listing_id}</span>
+                    </p>
+                </div>
+                <div className='slide-gallery'>
+                    <figure className='slider'>
+                        { images }
+                    </figure>
+                </div>
             </div>
-            <div className='slide-gallery'>
-                <figure className='slider'>
-                    { images }
-                </figure>
-            </div>
-        </div>
+        </section>
     )
 }
 

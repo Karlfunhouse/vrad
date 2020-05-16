@@ -4,7 +4,7 @@ import './Listing.css'
 import { Link } from 'react-router-dom'
 
 const Listing = (props) => {
-    const {name, address, listing_id, img} = props.listing
+    const {name, address, listing_id, img, area} = props.listing
     const {street, zip} = address
     return (
         <div className='listing-wrapper'>
@@ -16,7 +16,7 @@ const Listing = (props) => {
           <h2 className='listing-name'>{name}</h2>
           <p className='listing-address'>{street}, {zip}, Denver</p>
          <Link 
-            to = {`/listings/${listing_id}`}
+            to = {`/areas/${area}/listings/${listing_id}`}
             onClick={() => props.displayListing(props.listing)}>  
             <button 
               className='listing-btn'  
