@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import './ListingInfo.css'
 
 const ListingInfo = (props) => {
-    console.log(props.listing)
     const images = props.listing.img.map(img => {
         return <img 
         alt='' 
@@ -31,7 +30,12 @@ const ListingInfo = (props) => {
     return (
         <section>
             <nav className='listing-info-nav'>
-                <button className='favorite-btn'>{"\u2764"} Add to Favorite</button>
+                <button 
+                    className='favorite-btn'
+                    onClick={() => props.addFavoriteListing(props.listing)}
+                >
+                    {"\u2764"} Add to Favorite
+                </button>
                 <button className='back-listings-btn'>Back To Listings</button>
                 <button className='back-areas-btn'>Back To Areas</button>
             </nav>

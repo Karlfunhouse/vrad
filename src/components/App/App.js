@@ -98,6 +98,15 @@ export default class App extends Component {
     })
   }
 
+  addFavoriteListing = (listing) => {
+    this.setState(state => {
+      const favoriteListings = state.favoriteListings.concat(listing)
+      return {
+        favoriteListings
+      }
+    })
+  }
+
   render() {
     const { 
       isLoggedIn, 
@@ -121,8 +130,6 @@ export default class App extends Component {
         />}
 
         {!isLoggedIn ? <Redirect to="/" /> : <Redirect to="/areas" />}
-
-        {listings.length > 0 && <Redirect to="/listings" />}
 
         <Route
           path="/"
@@ -148,7 +155,7 @@ export default class App extends Component {
           }}
         />
         <Route
-          path="/listings"
+          path="/areas/:area"
           exact
           render={() => {
             return (
@@ -165,7 +172,8 @@ export default class App extends Component {
           render={() => {
             return (
               <ListingInfo 
-                listing={listing} 
+                listing={listing}
+                addFavoriteListing={this.addFavoriteListing} 
               />
             )
           }}
