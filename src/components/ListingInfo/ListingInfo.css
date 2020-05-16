@@ -2,8 +2,8 @@
     width: 90%;
     margin: 50px auto;
     display: grid;
-    grid-template: auto / repeat(2, 1fr);
     grid-gap: 50px;
+    grid-template: auto / repeat(1, 1fr);
 }
 
 .listing-info {
@@ -13,7 +13,6 @@
     border-radius: 7px;
     text-align: center;
 }
-
 
 @keyframes slidy {
     0% { left: 0%; }
@@ -27,7 +26,6 @@
     100% { left: -400%; }
     }
     
-
 .slide-gallery {
     width: 100%; 
     overflow: hidden; 
@@ -44,9 +42,27 @@
 }
 
 .listing-info-img {
-    height: 100%;
+    height: 400px;
     width: 30%;
     display: inline-block;  
     position: inherit;
 }
 
+@media (min-width: 640px) {
+    .listing-info-container {
+        width: 80%;
+    }
+}
+
+@media (min-width: 768px) {
+    .listing-info-container {
+        width: 70%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .listing-info-container {
+        grid-template: auto / repeat(2, 1fr);
+        width: 90%;
+    }
+}
