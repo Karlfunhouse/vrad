@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './ListingContainer.css'
 import Listing from '../Listing/Listing'
+import { Link } from "react-router-dom"
 
 const ListingContainer = (props) => {
   const allListings = props.listings.map(listing => {
@@ -12,10 +13,13 @@ const ListingContainer = (props) => {
       />
   })
     return (
-        <div className="listing-container">
-            {allListings}
-        </div>
-    )
+      <div className="listing-container">
+        <Link to="/areas">
+          <button className="back-areas-btn">Back To Areas</button>
+        </Link>
+        {allListings}
+      </div>
+    );
 }
 
 export default ListingContainer
