@@ -21,7 +21,7 @@ const UserInfo = (props) => {
           <button 
             className='favorite-btn'
           >
-            Favorite Listings: {favoriteListings.length}
+            {"\u2764"} Favorite Listings: {favoriteListings.length}
           </button>
           <button 
             className='logout-btn'

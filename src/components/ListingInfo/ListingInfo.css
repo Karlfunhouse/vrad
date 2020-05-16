@@ -1,3 +1,36 @@
+.listing-info-nav {
+    margin: 20px auto;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.back-listings-btn,
+.back-areas-btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    align-self: center;
+    cursor: pointer;
+    border: 2px solid #218fb1;
+    font-size: 1.2rem;
+    font-weight: bold;
+    opacity: .8;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
+    color: #218fb1;
+}
+
+.back-listings-btn:hover,
+.back-areas-btn:hover {
+    opacity: 1;
+    color: #fff;
+    background-color: #218fb1;
+    transition: color .5s, background-color .5s, opacity .5s;
+}
+
+.back-listings-btn {
+    margin-right: 30px;
+}
+
 .listing-info-container {
     width: 90%;
     margin: 50px auto;
