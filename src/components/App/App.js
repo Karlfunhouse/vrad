@@ -27,28 +27,28 @@ export default class App extends Component {
                    };
                  }
 
-                 componentDidMount = () => {
-                   const url = "https://vrad-api.herokuapp.com";
-                   fetch(url + "/api/v1/areas")
-                     .then((response) => response.json())
-                     .then((areas) => {
-                       const promiseData = areas.areas.map((area) => {
-                         return fetch(url + area.details)
-                           .then((response) => response.json())
-                           .then((details) => {
-                             return {
-                               ...details,
-                               area: area.area,
-                             };
-                           });
-                       });
-                       Promise.all(promiseData).then((resolvedData) => {
-                         this.setState({ areas: resolvedData });
-                       });
-                     })
-                     .catch((err) => console.error(err));
-                 };
-
+                 componentDidMount = async () => {
+                   try {
+                     const url = "https://vrad-api.herokuapp.com";
+                     let areasArray= [];
+                     const response = await fetch(url + "/api/v1/areas");
+                     const areas = await response.json();
+                     areas.areas.map(async (area) => {
+                      const response2 = await fetch(url + area.details)
+                      const areaDetails = await response2.json();
+                      const areaObject = {
+                        ...areaDetails,
+                        area: area.area
+                      }
+                      areasArray.push(areaObject)
+                    })
+                    this.setState({areas:areasArray})                    
+                   }
+                   catch (e) {
+                     console.log(e);
+                   }
+                 }
+                 
                  displayListings = (listings) => {
                    const url = "https://vrad-api.herokuapp.com";
                    const listingsPromises = listings.map((listing) => {
@@ -78,9 +78,7 @@ export default class App extends Component {
                    this.setState({ listing: listing });
                  };
 
-                 displayFavorites = (favoriteListings) => {
-                   
-                 }
+                 displayFavorites = (favoriteListings) => {};
 
                  checkLogin = (userInfo) => {
                    this.setState({
@@ -103,15 +101,17 @@ export default class App extends Component {
 
                  addFavoriteListing = (listing) => {
                    const newFavoriteListings = this.state.favoriteListings.slice();
-                   let foundListing = newFavoriteListings.find(fave => fave.listing_id === listing.listing_id);
+                   let foundListing = newFavoriteListings.find(
+                     (fave) => fave.listing_id === listing.listing_id
+                   );
                    if (!foundListing) {
-                     listing.favorite = true
-                     newFavoriteListings.push(listing)
-
+                     listing.favorite = true;
+                     newFavoriteListings.push(listing);
                    } else {
-                     listing.favorite = false
+                     listing.favorite = false;
                      let index = newFavoriteListings.findIndex(
-                       (i) => i.listing_id === listing.listing_id);
+                       (i) => i.listing_id === listing.listing_id
+                     );
                      newFavoriteListings.splice(index, 1);
                    }
                    this.setState({ favoriteListings: newFavoriteListings });
@@ -163,7 +163,7 @@ export default class App extends Component {
                                areas={areas}
                                displayListings={this.displayListings}
                              />
-                           )
+                           );
                          }}
                        />
                        <Route
@@ -175,7 +175,7 @@ export default class App extends Component {
                                listings={listings}
                                displayListing={this.displayListing}
                              />
-                           )
+                           );
                          }}
                        />
                        <Route
@@ -187,7 +187,7 @@ export default class App extends Component {
                                listings={favoriteListings}
                                displayListing={this.displayListing}
                              />
-                           )
+                           );
                          }}
                        />
                        <Route
@@ -199,10 +199,10 @@ export default class App extends Component {
                                listing={listing}
                                addFavoriteListing={this.addFavoriteListing}
                              />
-                           )
+                           );
                          }}
                        />
                      </div>
-                   )
+                   );
                  }
                }
