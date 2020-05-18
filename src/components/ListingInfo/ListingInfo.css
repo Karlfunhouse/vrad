@@ -2,7 +2,7 @@
     margin: 20px auto;
     width: 90%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .back-listings-btn,

@@ -13,12 +13,16 @@ const ListingContainer = (props) => {
       />
   })
     return (
-      <div className="listing-container">
-        <Link to="/areas">
-          <button className="back-areas-btn">Back To Areas</button>
-        </Link>
-        {allListings}
-      </div>
+      <section>
+        <nav className='listing-container-nav'>
+          <Link to="/areas">
+              <button className="back-areas-btn">Back To Areas</button>
+          </Link>
+        </nav>
+        <div className="listing-container">
+          {allListings}
+        </div>
+      </section>
     );
 }
 
