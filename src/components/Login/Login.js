@@ -31,7 +31,7 @@ export default class Login extends Component {
           <h2 className='login-message'>Welcome! Please enter your info:</h2>
           <form className='login-form'>
               <div className='login-item'>
-                  <label for='username' className='input-label'>Username: </label>
+                  <label htmlFor='username' className='input-label'>Username: </label>
                   <input 
                     type='text' 
                     placeholder='username'
@@ -41,7 +41,7 @@ export default class Login extends Component {
                   />
               </div>
               <div className='login-item'>
-                  <label for='email' className='input-label'>Email: </label>
+                  <label htmlFor='email' className='input-label'>Email: </label>
                   <input 
                     type='email' 
                     placeholder='email' 
@@ -51,7 +51,7 @@ export default class Login extends Component {
                   />
               </div>
               <div className='login-item'>
-                  <label for='usage'>What do you need a place for?</label>
+                  <label htmlFor='usage'>What do you need a place for?</label>
                   <div className='login-usage'>
                     <label>
                     <input 
@@ -101,7 +101,4 @@ export default class Login extends Component {
   }
 }
 
-Login.propTypes = {
-
-}
 

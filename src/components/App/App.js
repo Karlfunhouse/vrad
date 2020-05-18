@@ -163,7 +163,7 @@ export default class App extends Component {
                                areas={areas}
                                displayListings={this.displayListings}
                              />
-                           );
+                           )
                          }}
                        />
                        <Route
@@ -175,7 +175,7 @@ export default class App extends Component {
                                listings={listings}
                                displayListing={this.displayListing}
                              />
-                           );
+                           )
                          }}
                        />
                        <Route
@@ -187,7 +187,7 @@ export default class App extends Component {
                                listings={favoriteListings}
                                displayListing={this.displayListing}
                              />
-                           );
+                           )
                          }}
                        />
                        <Route
@@ -199,10 +199,10 @@ export default class App extends Component {
                                listing={listing}
                                addFavoriteListing={this.addFavoriteListing}
                              />
-                           );
+                           )
                          }}
                        />
                      </div>
-                   );
+                   )
                  }
                }

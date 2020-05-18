@@ -12,6 +12,3 @@ const Header = () => {
 
 export default Header
 
-Header.propTypes = {
-
-}

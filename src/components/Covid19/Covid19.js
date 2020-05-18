@@ -34,7 +34,3 @@ class Covid19 extends Component {
 }
 
 export default Covid19
-
-Covid19.propTypes = {
-
-}
