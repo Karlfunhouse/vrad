@@ -33,7 +33,7 @@ const ListingInfo = (props) => {
       <section>
         <nav className="listing-info-nav">
           <button
-            className="favorite-btn"
+            className={favorite ? "unfavorite-btn" : "favorite-btn"}
             onClick={() => props.addFavoriteListing(props.listing)}
           >
             {"\u2764"} {favorite ? "Remove from Favorites" : "Add to Favorites"}

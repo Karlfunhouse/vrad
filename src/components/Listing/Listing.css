@@ -20,6 +20,11 @@
     object-fit: cover;
 }
 
+.listing-img:hover {
+    filter: contrast(120%);
+    transition: filter .2s;
+}
+
 .listing-name,
 .listing-address {
     padding: 10px 20px;
