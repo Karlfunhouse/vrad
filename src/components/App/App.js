@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { Route, Redirect } from 'react-router-dom'
 import './App.css'
-
 import UserInfo from '../UserInfo/UserInfo'
 import Covid19 from '../Covid19/Covid19'
 import Header from '../Header/Header'
@@ -54,9 +52,7 @@ export default class App extends Component {
                 //     let listingsArray = [];
                 //     await listings.forEach(async (listing) => {
                 //       const images = Object.entries(imageData).find((item) => {
-                //         if (item[0] === listing.split("").splice(17).join("")) {
-                //           return item[1];
-                //         }
+                //         return (item[0] === listing.split("").splice(17).join("")) && item[1]
                 //       });
                 //       const response = await fetch(url + listing)
                 //       const listingDetails = await response.json();
@@ -77,9 +73,7 @@ export default class App extends Component {
                     const url = "https://vrad-api.herokuapp.com";
                     const listingsPromises = listings.map((listing) => {
                       const images = Object.entries(imageData).find((item) => {
-                        if (item[0] === listing.split("").splice(17).join("")) {
-                          return item[1];
-                        }
+                        return (item[0] === listing.split("").splice(17).join("")) && item[1]
                       });
                       return fetch(url + listing)
                         .then((response) => response.json())
