@@ -4,20 +4,20 @@ import { url } from '../utilsData'
 export const fetchAreas = async () => {
     try {
         let areasData = [];
-        const response = await fetch(url + "/api/v1/areas");
-        const areas = await response.json();
+        const response = await fetch(url + "/api/v1/areas")
+        const areas = await response.json()
         areas.areas.forEach(async (area) => {
-          const response2 = await fetch(url + area.details);
-          const areaDetails = await response2.json();
+          const response2 = await fetch(url + area.details)
+          const areaDetails = await response2.json()
           const areaObject = {
             ...areaDetails,
             area: area.area,
           };
-          areasData.push(areaObject);
+          areasData.push(areaObject)
         });
         return areasData
       } catch (e) {
-        console.log(e);
+        console.log(e)
       }
 }
 
@@ -33,11 +33,11 @@ export const fetchListings = async (listings) => {
                 favorite: false,
                 ...listing,
                 img: images[1],
-                };
-            });
-        });
+                }
+            })
+        })
         return Promise.all(listingsPromises)
-        .catch((err) => console.error(err));
+        .catch((err) => console.error(err))
 }
 
 

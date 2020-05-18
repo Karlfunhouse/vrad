@@ -26,13 +26,11 @@ export default class App extends Component {
                  }
 
                  componentDidMount = async () => {
-                   let areasData = await fetchAreas()
-                   this.setState({ areas: areasData })
+                   this.setState({ areas: await fetchAreas() })
                  }
 
                   displayListings = async (listings) => {
-                    let ListingsData = await fetchListings(listings)
-                    this.setState({ listings: ListingsData });
+                    this.setState({ listings: await fetchListings(listings) })
                   };
 
                  displayListing = (listing) => {
