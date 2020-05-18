@@ -21,5 +21,16 @@ const AreaContainer = (props) => {
 export default AreaContainer
 
 AreaContainer.propTypes = {
-
+    areas: PropTypes.arrayOf(PropTypes.shape({
+            about: PropTypes.string.isRequired,
+            area: PropTypes.string.isRequired,
+            id: PropTypes.number.isRequired,
+            listings: PropTypes.arrayOf(PropTypes.string),
+            location: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            quick_search: PropTypes.string,
+            region_code: PropTypes.number,
+    })).isRequired,
+    displayListings: PropTypes.func.isRequired
 }
+
