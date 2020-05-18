@@ -35,7 +35,6 @@
 
 .listing-btn {
     background-color: #218fb1;
-    width: 100%;
     padding: 15px;
     border: 0;
     border-radius: 0 0 7px 7px;
@@ -43,6 +42,7 @@
     color: #fff;
     font-size: 1.2rem;
     opacity: .7;
+    width: 100%;
 }
 
 .listing-btn:hover {
