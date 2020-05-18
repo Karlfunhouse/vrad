@@ -33,7 +33,7 @@ const ListingInfo = (props) => {
       <section>
         <nav className="listing-info-nav">
           <button
-            className="favorite-btn"
+            className={favorite ? "unfavorite-btn" : "favorite-btn"}
             onClick={() => props.addFavoriteListing(props.listing)}
           >
             {"\u2764"} {favorite ? "Remove from Favorites" : "Add to Favorites"}
@@ -47,7 +47,11 @@ const ListingInfo = (props) => {
         </nav>
         <div className="listing-info-container">
           <div className="listing-info">
-            <h2 className="listing-info-name">{name}</h2>
+            <h2 className={favorite ? "listing-info-name-favorite" : "listing-info-name"}>
+              {favorite && "\u2764 "}
+               {name}
+              {favorite && " \u2764"}
+            </h2>
             <p className="listing-info-p">
               Area: <span className="info-accent">{area}</span>
             </p>

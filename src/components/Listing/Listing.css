@@ -16,15 +16,32 @@
 .listing-img {
     border-radius: 7px 7px 0 0;
     width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.listing-img:hover {
+    filter: contrast(120%);
+    transition: filter .2s;
+}
+
+.listing-name {
+    color: #218fb1;
+}
+
+.listing-name-favorite {
+    color: #ad3567;
 }
 
 .listing-name,
+.listing-name-favorite,
 .listing-address {
     padding: 10px 20px;
     text-align: center;
 }
 
-.listing-name:after {
+.listing-name:after,
+.listing-name-favorite:after {
     content: " ";
     display: block;
     height: 2px;
@@ -33,9 +50,12 @@
     margin: 10px auto 0;
 }
 
+.listing-name-favorite:after {
+    background-color: #ad3567;
+}
+
 .listing-btn {
     background-color: #218fb1;
-    width: 100%;
     padding: 15px;
     border: 0;
     border-radius: 0 0 7px 7px;
@@ -43,6 +63,7 @@
     color: #fff;
     font-size: 1.2rem;
     opacity: .7;
+    width: 100%;
 }
 
 .listing-btn:hover {

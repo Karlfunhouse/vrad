@@ -21,7 +21,8 @@ const UserInfo = (props) => {
           <div className='btn-wrapper'>
           <Link to="/favorites">
             <button 
-              className='favorite-btn' disabled={favoriteListings.length>0 ? null : "disabled"}
+              className={favoriteListings.length>0 ? 'favorite-btn' : 'no-favorite-btn'}
+              disabled={favoriteListings.length>0 ? null : "disabled"}
             >
               {"\u2764"} {!favoriteListings.length? "No Favorite Listings" : `Favorite Listings: ${favoriteListings.length}`}
             </button>

@@ -23,6 +23,8 @@
 }
 
 .favorite-btn,
+.no-favorite-btn,
+.unfavorite-btn,
 .logout-btn {
     padding: 10px 20px;
     border-radius: 5px;
@@ -35,10 +37,17 @@
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
 }
 
-.favorite-btn {
+.favorite-btn,
+.no-favorite-btn,
+.unfavorite-btn {
     background-color: #218fb1;
     color: #fff;
     margin-right: 30px;
+}
+
+.favorite-btn {
+    background-color: #ad3567;
+    border: 2px solid #ad3567;
 }
 
 .logout-btn {
@@ -46,7 +55,8 @@
 }
 
 .favorite-btn:hover ,
-.logout-btn:hover {
+.logout-btn:hover,
+.unfavorite-btn:hover {
     opacity: 1;
     transition: opacity .5s;
 }
