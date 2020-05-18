@@ -30,49 +30,73 @@ export default class App extends Component {
                  componentDidMount = async () => {
                    try {
                      const url = "https://vrad-api.herokuapp.com";
-                     let areasArray= [];
+                     let areasArray = [];
                      const response = await fetch(url + "/api/v1/areas");
                      const areas = await response.json();
-                     areas.areas.map(async (area) => {
-                      const response2 = await fetch(url + area.details)
-                      const areaDetails = await response2.json();
-                      const areaObject = {
-                        ...areaDetails,
-                        area: area.area
-                      }
-                      areasArray.push(areaObject)
-                    })
-                    this.setState({areas:areasArray})                    
-                   }
-                   catch (e) {
+                     areas.areas.forEach(async (area) => {
+                       const response2 = await fetch(url + area.details);
+                       const areaDetails = await response2.json();
+                       const areaObject = {
+                         ...areaDetails,
+                         area: area.area,
+                       };
+                       areasArray.push(areaObject);
+                     });
+                     this.setState({ areas: areasArray });
+                   } catch (e) {
                      console.log(e);
                    }
-                 }
-                 
-                 displayListings = (listings) => {
-                   const url = "https://vrad-api.herokuapp.com";
-                   const listingsPromises = listings.map((listing) => {
-                     const images = Object.entries(imageData).find((item) => {
-                       if (item[0] === listing.split("").splice(17).join("")) {
-                         return item[1];
-                       }
-                     });
-                     return fetch(url + listing)
-                       .then((response) => response.json())
-                       .then((listing) => {
-                         return {
-                           favorite: false,
-                           ...listing,
-                           img: images[1],
-                         };
-                       });
-                   });
-                   Promise.all(listingsPromises)
-                     .then((resolvedListings) => {
-                       this.setState({ listings: resolvedListings });
-                     })
-                     .catch((err) => console.error(err));
                  };
+
+                //  displayListings = async (listings) => {
+                //   try {
+                //     const url = "https://vrad-api.herokuapp.com";
+                //     let listingsArray = [];
+                //     await listings.forEach(async (listing) => {
+                //       const images = Object.entries(imageData).find((item) => {
+                //         if (item[0] === listing.split("").splice(17).join("")) {
+                //           return item[1];
+                //         }
+                //       });
+                //       const response = await fetch(url + listing)
+                //       const listingDetails = await response.json();
+                //       const listingObject = {
+                //             favorite: false,
+                //             ...listingDetails,
+                //             img: images[1],
+                //           }
+                //       listingsArray.push(listingObject)
+                //     })
+                //     this.setState({ listings: listingsArray })
+                //   } catch (e) {
+                //     console.log(e)
+                //   } 
+                // };
+
+                  displayListings = (listings) => {
+                    const url = "https://vrad-api.herokuapp.com";
+                    const listingsPromises = listings.map((listing) => {
+                      const images = Object.entries(imageData).find((item) => {
+                        if (item[0] === listing.split("").splice(17).join("")) {
+                          return item[1];
+                        }
+                      });
+                      return fetch(url + listing)
+                        .then((response) => response.json())
+                        .then((listing) => {
+                          return {
+                            favorite: false,
+                            ...listing,
+                            img: images[1],
+                          };
+                        });
+                    });
+                    Promise.all(listingsPromises)
+                      .then((resolvedListings) => {
+                        this.setState({ listings: resolvedListings });
+                      })
+                      .catch((err) => console.error(err));
+                  };
 
                  displayListing = (listing) => {
                    this.setState({ listing: listing });
