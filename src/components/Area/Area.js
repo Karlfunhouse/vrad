@@ -38,5 +38,15 @@ const Area = (props) => {
 export default Area
 
 Area.propTypes = {
-
+  area: PropTypes.shape({
+    about: PropTypes.string.isRequired,
+    area: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    listings: PropTypes.arrayOf(PropTypes.string).isRequired,
+    location: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    quick_search: PropTypes.string,
+    region_code: PropTypes.number,
+  }).isRequired,
+  displayListings: PropTypes.func.isRequired
 }
