@@ -50,20 +50,30 @@
     justify-content: space-between;
 }
 
-.listing-info-name {
+.listing-info-name,
+.listing-info-name-favorite {
     color: #218fb1;
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 30px;
 }
 
-.listing-info-name:after {
+.listing-info-name-favorite {
+    color: #ad3567;
+}
+
+.listing-info-name:after,
+.listing-info-name-favorite:after {
     content: " ";
     display: block;
     height: 2px;
     background-color: #218fb1;
     width: 100px;
     margin: 10px auto 0;
+}
+
+.listing-info-name-favorite:after {
+    background-color: #ad3567;
 }
 
 .listing-info-p {

@@ -25,19 +25,33 @@
     transition: filter .2s;
 }
 
+.listing-name {
+    color: #218fb1;
+}
+
+.listing-name-favorite {
+    color: #ad3567;
+}
+
 .listing-name,
+.listing-name-favorite,
 .listing-address {
     padding: 10px 20px;
     text-align: center;
 }
 
-.listing-name:after {
+.listing-name:after,
+.listing-name-favorite:after {
     content: " ";
     display: block;
     height: 2px;
     background-color: #218fb1;
     width: 100px;
     margin: 10px auto 0;
+}
+
+.listing-name-favorite:after {
+    background-color: #ad3567;
 }
 
 .listing-btn {

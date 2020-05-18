@@ -47,7 +47,11 @@ const ListingInfo = (props) => {
         </nav>
         <div className="listing-info-container">
           <div className="listing-info">
-            <h2 className="listing-info-name">{name}</h2>
+            <h2 className={favorite ? "listing-info-name-favorite" : "listing-info-name"}>
+              {favorite && "\u2764 "}
+               {name}
+              {favorite && " \u2764"}
+            </h2>
             <p className="listing-info-p">
               Area: <span className="info-accent">{area}</span>
             </p>
