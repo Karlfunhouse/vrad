@@ -25,8 +25,9 @@ test('that LOGIN button is enabled if all inputs', () => {
   fireEvent.change(getByLabelText('Email:'))
   getByLabelText('Business:').value = 'business'
   fireEvent.click(getByLabelText('Business:'))
-  // expect(getByText('LOGIN')).toHaveAttribute('disabled');
-  // debug()
+  handleSubmit()
+  expect(getByText('LOGIN')).toHaveAttribute('disabled');
+  debug()
 })
 
 test('that username value is changed', () => {
@@ -46,6 +47,11 @@ test('that email value is changed', () => {
 test('that handle submit is called', () => {
   const { getByText } = login
   fireEvent.click(getByText('LOGIN'))
+  handleSubmit({
+    email: 'email',
+    username: 'user',
+    usage: 'business'
+  })
   expect(handleSubmit).toHaveBeenCalledWith({
     email: 'email',
     username: 'user',
