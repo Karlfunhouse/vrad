@@ -23,6 +23,7 @@ const UserInfo = (props) => {
             <button 
               className={favoriteListings.length>0 ? 'favorite-btn' : 'no-favorite-btn'}
               disabled={favoriteListings.length>0 ? null : "disabled"}
+              data-testid="Favorite Button"
             >
               {"\u2764"} {!favoriteListings.length? "No Favorite Listings" : `Favorite Listings: ${favoriteListings.length}`}
             </button>

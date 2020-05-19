@@ -95,7 +95,6 @@ fetchListings.mockResolvedValue(listings)
 
 test('<App/> component fetched areas data', async () => {
   const { debug } = appComponent
-  debug()
   expect(true).toBeTruthy()
 })
 })
