@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, cleanup, fireEvent } from '@testing-library/react'
 import ListingInfo from './ListingInfo'
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom"
 
 const addFavoriteListing = jest.fn(() => true)
 
