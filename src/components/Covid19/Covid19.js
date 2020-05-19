@@ -17,7 +17,10 @@ class Covid19 extends Component {
 
     render() {
         return (
-            <div className={this.state.display}>
+            <div 
+                className={this.state.display}
+                data-testid={this.state.display}
+            >
                 <p className='covid19-text'>
                     Get the latest on our COVID-19 response and cancellation policies.
                 </p>
