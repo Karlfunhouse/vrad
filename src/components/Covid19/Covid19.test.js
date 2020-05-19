@@ -2,7 +2,8 @@ import React from 'react'
 import { render, cleanup, fireEvent } from '@testing-library/react'
 import Covid19 from './Covid19'
 
-afterEach(cleanup)
+describe('Covid19 Component', () => {
+  afterEach(cleanup)
 
 test('<Covid19/> component successfully renders', () => {
   const { getByText } = render(<Covid19 />)
@@ -14,4 +15,5 @@ test('<Covid19/> state changes and banner dissapear after x click', () => {
   expect(getByTestId('covid19-container')).toBeInTheDocument()
   fireEvent.click(getByText('X'))
   expect(getByTestId('hide')).toBeInTheDocument()
+})
 })

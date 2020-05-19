@@ -5,6 +5,7 @@ import { fetchAreas, fetchListings } from '../../ApiFetch/ApiFetch'
 import { BrowserRouter } from "react-router-dom"
 jest.mock('../../ApiFetch/ApiFetch')
 
+describe('App Component', () => {
 let appComponent
 let areas
 let listings
@@ -93,14 +94,14 @@ fetchAreas.mockResolvedValue(areas)
 fetchListings.mockResolvedValue(listings)
 
 test('<App/> component fetched areas data', async () => {
-  const { debug, getByText } = appComponent
+  const { debug } = appComponent
   debug()
   expect(true).toBeTruthy()
-  // FIRE EVENT LOGIN CORRECTLY
-  // fireEvent.click(getByText('LOGIN'))
-  // await waitFor(() => getByText(areas[1].about))
-  // expect(getByText(areas[1].about)).toBeInTheDocument()
 })
+})
+
+
+
 
 
 

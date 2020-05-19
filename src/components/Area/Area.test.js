@@ -3,8 +3,9 @@ import { render, cleanup, fireEvent } from "@testing-library/react"
 import Area from "./Area"
 import { BrowserRouter } from "react-router-dom"
 
-const displayListings = jest.fn()
 
+describe('Area Component', () => {
+  const displayListings = jest.fn()
 let areaComponent
 let area
 beforeEach(() => {
@@ -46,4 +47,5 @@ test('that displayListings has been called with listings', () => {
 
 test('that the url pathway changes when user clicks button', () => {
   expect(location.pathname).toBe(`/areas/${area.area}/listings`)
+})
 })
