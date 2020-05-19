@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import './Login.css'
 
 export default class Login extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       email: '',
       username: '',
@@ -23,8 +23,8 @@ export default class Login extends Component {
   }
 
   render() {
-    const {email, username, usage} = this.state
-    const isComplete = email && username && usage ? null : 'disabled'
+    const {email, username} = this.state
+    const isComplete = email && username ? false : true
     return (
       <div className='login-container'>
           <h2 className='login-message'>Welcome! Please enter your info:</h2>

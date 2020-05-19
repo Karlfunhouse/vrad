@@ -2,29 +2,14 @@ import React from 'react'
 import { render, cleanup, fireEvent } from '@testing-library/react'
 import Login from './Login'
 
-const handleSubmit = jest.fn()
+const checkLogin = jest.fn()
 
 let loginComponent
 beforeEach(() => {
-  loginComponent = render(<Login/>)
+  loginComponent = render(<Login checkLogin={checkLogin}/>)
 })
 
 afterEach(cleanup)
-
-test('that LOGIN button is disabled if any input is empty', () => {
-  const { getByLabelText, getByText } = loginComponent
-  getByLabelText('Username:').value = ''
-  expect(getByText('LOGIN')).toHaveAttribute('disabled');
-})
-
-test('that LOGIN button is enabled if all inputs', () => {
-  const { getByLabelText, getByText, debug } = loginComponent
-  fireEvent.change(getByLabelText('Username:'), {target: {value: 'user'}})
-  fireEvent.change(getByLabelText('Email:'), {target: {value: 'email'}})
-  handleSubmit()
-  expect(getByText('LOGIN')).toHaveAttribute('disabled');
-  debug()
-})
 
 test('that username value is changed', () => {
   const { getByLabelText } = loginComponent
@@ -40,18 +25,26 @@ test('that email value is changed', () => {
   expect(getByLabelText('Email:').value).toBe('email')
 })
 
-test('that handle submit is called', () => {
-  const { getByText } = loginComponent
-  fireEvent.click(getByText('LOGIN'))
-  handleSubmit({
-    email: 'email',
-    username: 'user',
-    usage: 'business'
-  })
-  expect(handleSubmit).toHaveBeenCalledWith({
-    email: 'email',
-    username: 'user',
-    usage: 'business'
-  })
+test('that LOGIN button is disabled by default or if any input is empty', () => {
+  const { getByLabelText, getByText } = loginComponent
+  expect(getByText('LOGIN')).toHaveAttribute('disabled')
+  fireEvent.change(getByLabelText('Username:'), {target: {value: 'user'}})
+  fireEvent.change(getByLabelText('Email:'), {target: {value: ''}})
+  
+  expect(getByText('LOGIN')).toHaveAttribute('disabled');
 })
 
+test('that LOGIN button is enabled if all required inputs are filled', () => {
+  const { getByLabelText, getByText } = loginComponent
+  fireEvent.change(getByLabelText('Username:'), {target: {value: 'user'}})
+  fireEvent.change(getByLabelText('Email:'), {target: {value: 'email'}})
+  expect(getByText('LOGIN')).not.toHaveAttribute('disabled');
+})
+
+test('that handleSubmit is invoked with correct arguments', () => {
+  const { getByLabelText, getByText, debug } = loginComponent
+  fireEvent.change(getByLabelText('Username:'), {target: {value: 'user'}})
+  fireEvent.change(getByLabelText('Email:'), {target: {value: 'email'}})
+  fireEvent.click(getByText('LOGIN'))
+  expect(checkLogin).toHaveBeenCalledTimes(1)
+})
