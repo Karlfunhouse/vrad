@@ -13,20 +13,20 @@ const Area = (props) => {
     } = props.area
     
     return (
-      <div className="area-wrapper">
+      <div className='area-wrapper'>
         <div className={area}>
-          <h2 className="area-area">{area}</h2>
+          <h2 className='area-area'>{area}</h2>
         </div>
-        <div className="area-info">
-          <h2 className="area-name">{name}</h2>
-          <p className="area-location">{location}</p>
-          <p className="area-about">{about}</p>
+        <div className='area-info'>
+          <h2 className='area-name'>{name}</h2>
+          <p className='area-location'>{location}</p>
+          <p className='area-about'>{about}</p>
         </div>
         <Link
           onClick={() => props.displayListings(listings)}
-          to={`/areas/${area.replace(/\s/g, "")}/listings`}
+          to={`/areas/${area.replace(/\s/g, '')}/listings`}
         >
-          <button className="listings-btn">See Listings</button>
+          <button className='listings-btn'>See Listings</button>
         </Link>
       </div>
     );

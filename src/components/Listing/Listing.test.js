@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, cleanup, fireEvent } from "@testing-library/react";
+import { render, cleanup, fireEvent } from '@testing-library/react';
 import Listing from './Listing';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom';
 
 describe('Listing Component', () => {
   const displayListing = jest.fn()
@@ -11,25 +11,25 @@ describe('Listing Component', () => {
     listing = {
       listing_id: 1,
       area_id: 1,
-      name: "name",
+      name: 'name',
       address: {
-        street: "street",
+        street: 'street',
         zip: 11111,
       },
       details: {
         neighborhood_id: 1,
         superhost: true,
-        seller_source: "seller_source",
+        seller_source: 'seller_source',
         beds: 1,
         baths: 1,
         cost_per_night: 1,
-        features: ["feature1", "feature2"],
+        features: ['feature1', 'feature2'],
       },
-      dev_id: "dev_id",
-      area: "area",
+      dev_id: 'dev_id',
+      area: 'area',
       db_connect: 1,
       favorite: false,
-      img: ["img1", "img2", "img3"]
+      img: ['img1', 'img2', 'img3']
     }
     listingComponent = render(
       <BrowserRouter>

@@ -15,9 +15,9 @@ export default class App extends Component {
                    super();
                    this.state = {
                      isLoggedIn: false,
-                     username: "",
-                     email: "",
-                     usage: "",
+                     username: '',
+                     email: '',
+                     usage: '',
                      favoriteListings: [],
                      areas: [],
                      listings: [],
@@ -50,9 +50,9 @@ export default class App extends Component {
 
                  logout = () => {
                    this.setState({
-                     username: "",
-                     email: "",
-                     usage: "",
+                     username: '',
+                     email: '',
+                     usage: '',
                      favoriteListings: [],
                      isLoggedIn: false,
                    });
@@ -101,20 +101,20 @@ export default class App extends Component {
                        )}
 
                        {!isLoggedIn ? (
-                         <Redirect to="/" />
+                         <Redirect to='/' />
                        ) : (
-                         <Redirect to="/areas" />
+                         <Redirect to='/areas' />
                        )}
 
                        <Route
-                         path="/"
+                         path='/'
                          exact
                          render={() => {
                            return <Login checkLogin={this.checkLogin} />;
                          }}
                        />
                        <Route
-                         path="/areas"
+                         path='/areas'
                          exact
                          render={() => {
                            return (
@@ -126,7 +126,7 @@ export default class App extends Component {
                          }}
                        />
                        <Route
-                         path="/areas/:area/listings"
+                         path='/areas/:area/listings'
                          exact
                          render={() => {
                            return (
@@ -138,7 +138,7 @@ export default class App extends Component {
                          }}
                        />
                        <Route
-                         path="/favorites"
+                         path='/favorites'
                          exact
                          render={() => {
                            return (
@@ -150,7 +150,7 @@ export default class App extends Component {
                          }}
                        />
                        <Route
-                         path="/areas/:listing_id/listings/:listing_id"
+                         path='/areas/:listing_id/listings/:listing_id'
                          exact
                          render={() => {
                            return (

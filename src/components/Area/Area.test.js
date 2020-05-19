@@ -1,7 +1,7 @@
-import React from "react"
-import { render, cleanup, fireEvent } from "@testing-library/react"
-import Area from "./Area"
-import { BrowserRouter } from "react-router-dom"
+import React from 'react'
+import { render, cleanup, fireEvent } from '@testing-library/react'
+import Area from './Area'
+import { BrowserRouter } from 'react-router-dom'
 
 
 describe('Area Component', () => {
@@ -10,13 +10,13 @@ let areaComponent
 let area
 beforeEach(() => {
   area = {
-    about: "about",
-    area: "area",
+    about: 'about',
+    area: 'area',
     id: 1,
-    listings: ["/1", "/2"],
-    location: "location",
-    name: "name",
-    quick_search: "1",
+    listings: ['/1', '/2'],
+    location: 'location',
+    name: 'name',
+    quick_search: '1',
     region_code: 1,
   }
   areaComponent = render(
