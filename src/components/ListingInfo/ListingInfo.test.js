@@ -35,7 +35,7 @@ describe('ListingInfo Component', () => {
     }
     listingInfoComponent = render(
       <BrowserRouter>
-        <ListingInfo listing={listing} addFavoriteListing={addFavoriteListing} />
+        <ListingInfo listing={listing} addFavoriteListing={addFavoriteListing}/>
       </BrowserRouter>
     )
   })
