@@ -72,13 +72,13 @@ describe('ListingInfo Component', () => {
   
   test('that the url pathway changes when user clicks Back To Listing button', () => {
     const { getByText } = listingInfoComponent
-    fireEvent.click(getByText('Back To Listings'));
+    fireEvent.click(getByText('Back To Listings'))
     expect(location.pathname).toBe(`/areas/${listing.area}/listings`)
   })
   
   test('that the url pathway changes when user clicks Back To Areas button', () => {
     const { getByText } = listingInfoComponent
-    fireEvent.click(getByText('Back To Areas'));
+    fireEvent.click(getByText('Back To Areas'))
     expect(location.pathname).toBe('/areas')
   })
 })

@@ -1,7 +1,7 @@
-import React from 'react';
-import { render, cleanup, fireEvent } from '@testing-library/react';
-import Listing from './Listing';
-import { BrowserRouter } from 'react-router-dom';
+import React from 'react'
+import { render, cleanup, fireEvent } from '@testing-library/react'
+import Listing from './Listing'
+import { BrowserRouter } from 'react-router-dom'
 
 describe('Listing Component', () => {
   const displayListing = jest.fn()
@@ -47,15 +47,15 @@ describe('Listing Component', () => {
   
   test('that displayListings has been clicked', () => {
     const { getByText } = listingComponent
-    fireEvent.click(getByText('See Details'));
-    expect(displayListing).toHaveBeenCalledTimes(1);
+    fireEvent.click(getByText('See Details'))
+    expect(displayListing).toHaveBeenCalledTimes(1)
   })
   
   test('that displayListing has been called with listing', () => {
     const { getByText } = listingComponent
-    fireEvent.click(getByText('See Details'));
-    expect(displayListing).toHaveBeenCalledWith(listing);
-  });
+    fireEvent.click(getByText('See Details'))
+    expect(displayListing).toHaveBeenCalledWith(listing)
+  })
   
   test('that the url pathway changes when user clicks button', () => {
     expect(location.pathname).toBe(`/areas/${listing.area}/listings/${listing.listing_id}`)

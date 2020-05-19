@@ -29,7 +29,7 @@ const Area = (props) => {
           <button className='listings-btn'>See Listings</button>
         </Link>
       </div>
-    );
+    )
 }
 
 export default Area

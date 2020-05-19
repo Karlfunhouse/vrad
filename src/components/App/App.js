@@ -12,7 +12,7 @@ import { fetchAreas, fetchListings } from '../../ApiFetch/ApiFetch'
 
 export default class App extends Component {
                  constructor() {
-                   super();
+                   super()
                    this.state = {
                      isLoggedIn: false,
                      username: '',
@@ -22,7 +22,7 @@ export default class App extends Component {
                      areas: [],
                      listings: [],
                      listing: null,
-                   };
+                   }
                  }
 
                  componentDidMount = async () => {
@@ -31,13 +31,13 @@ export default class App extends Component {
 
                   displayListings = async (listings) => {
                     this.setState({ listings: await fetchListings(listings) })
-                  };
+                  }
 
                  displayListing = (listing) => {
-                   this.setState({ listing: listing });
-                 };
+                   this.setState({ listing: listing })
+                 }
 
-                 displayFavorites = (favoriteListings) => {};
+                 displayFavorites = (favoriteListings) => {}
 
                  checkLogin = (userInfo) => {
                    this.setState({
@@ -45,8 +45,8 @@ export default class App extends Component {
                      email: userInfo.email,
                      usage: userInfo.usage,
                      isLoggedIn: true,
-                   });
-                 };
+                   })
+                 }
 
                  logout = () => {
                    this.setState({
@@ -55,26 +55,26 @@ export default class App extends Component {
                      usage: '',
                      favoriteListings: [],
                      isLoggedIn: false,
-                   });
-                 };
+                   })
+                 }
 
                  addFavoriteListing = (listing) => {
-                   const newFavoriteListings = this.state.favoriteListings.slice();
+                   const newFavoriteListings = this.state.favoriteListings.slice()
                    let foundListing = newFavoriteListings.find(
                      (fave) => fave.listing_id === listing.listing_id
-                   );
+                   )
                    if (!foundListing) {
-                     listing.favorite = true;
-                     newFavoriteListings.push(listing);
+                     listing.favorite = true
+                     newFavoriteListings.push(listing)
                    } else {
-                     listing.favorite = false;
+                     listing.favorite = false
                      let index = newFavoriteListings.findIndex(
                        (i) => i.listing_id === listing.listing_id
-                     );
-                     newFavoriteListings.splice(index, 1);
+                     )
+                     newFavoriteListings.splice(index, 1)
                    }
-                   this.setState({ favoriteListings: newFavoriteListings });
-                 };
+                   this.setState({ favoriteListings: newFavoriteListings })
+                 }
 
                  render() {
                    const {
@@ -85,7 +85,7 @@ export default class App extends Component {
                      usage,
                      favoriteListings,
                      areas,
-                   } = this.state;
+                   } = this.state
 
                    return (
                      <div>
@@ -110,7 +110,7 @@ export default class App extends Component {
                          path='/'
                          exact
                          render={() => {
-                           return <Login checkLogin={this.checkLogin} />;
+                           return <Login checkLogin={this.checkLogin} />
                          }}
                        />
                        <Route
@@ -122,7 +122,7 @@ export default class App extends Component {
                                areas={areas}
                                displayListings={this.displayListings}
                              />
-                           );
+                           )
                          }}
                        />
                        <Route
@@ -134,7 +134,7 @@ export default class App extends Component {
                                listings={listings}
                                displayListing={this.displayListing}
                              />
-                           );
+                           )
                          }}
                        />
                        <Route
@@ -146,7 +146,7 @@ export default class App extends Component {
                                listings={favoriteListings}
                                displayListing={this.displayListing}
                              />
-                           );
+                           )
                          }}
                        />
                        <Route
@@ -158,10 +158,10 @@ export default class App extends Component {
                                listing={listing}
                                addFavoriteListing={this.addFavoriteListing}
                              />
-                           );
+                           )
                          }}
                        />
                      </div>
-                   );
+                   )
                  }
                }

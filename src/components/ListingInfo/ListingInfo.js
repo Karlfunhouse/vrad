@@ -82,7 +82,7 @@ const ListingInfo = (props) => {
           </div>
         </div>
       </section>
-    );
+    )
 }
 
 export default ListingInfo

@@ -1,12 +1,12 @@
-import React from "react";
-import { render, cleanup } from "@testing-library/react";
-import ListingContainer from "./ListingContainer";
-import { BrowserRouter } from "react-router-dom";
+import React from "react"
+import { render, cleanup } from "@testing-library/react"
+import ListingContainer from "./ListingContainer"
+import { BrowserRouter } from "react-router-dom"
 
 describe("ListingContainer Component", () => {
-  let listingContainerComponent;
-  let listings;
-  let displayListing = jest.fn();
+  let listingContainerComponent
+  let listings
+  let displayListing = jest.fn()
   beforeEach(() => {
     listings = [
       {
@@ -55,17 +55,17 @@ describe("ListingContainer Component", () => {
         favorite: false,
         img: ["imgA", "imgB", "imgC"],
       },
-    ];
+    ]
     listingContainerComponent = render(
       <BrowserRouter>
         <ListingContainer listings={listings} displayListing={displayListing} />
       </BrowserRouter>
-    );
-  });
+    )
+  })
 
   test("ListingContainer component renders correctly", () => {
-    const { getByText } = listingContainerComponent;
-    expect(getByText("name2")).toBeInTheDocument();
+    const { getByText } = listingContainerComponent
+    expect(getByText("name2")).toBeInTheDocument()
     console.log(location.pathname)
-  });
-});
+  })
+})

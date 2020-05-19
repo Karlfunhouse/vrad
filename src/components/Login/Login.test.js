@@ -31,7 +31,7 @@ describe('Login Component', () => {
     fireEvent.change(getByLabelText('Username:'), {target: {value: 'user'}})
     fireEvent.change(getByLabelText('Email:'), {target: {value: 'email'}})
     fireEvent.click(getByLabelText('Business:'), {target: {value: 'business'}})
-    expect(getByText('LOGIN')).not.toHaveAttribute('disabled');
+    expect(getByText('LOGIN')).not.toHaveAttribute('disabled')
   })
   
   test('that LOGIN button is disabled by default or if any required input is empty', () => {
@@ -40,7 +40,7 @@ describe('Login Component', () => {
     fireEvent.change(getByLabelText('Username:'), {target: {value: 'user'}})
     fireEvent.change(getByLabelText('Email:'), {target: {value: ''}})
     fireEvent.click(getByLabelText('Business:'), {target: {value: 'business'}})
-    expect(getByText('LOGIN')).toHaveAttribute('disabled');
+    expect(getByText('LOGIN')).toHaveAttribute('disabled')
   })
   
   test('that handleSubmit is invoked with correct arguments', () => {

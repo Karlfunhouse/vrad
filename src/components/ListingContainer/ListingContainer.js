@@ -23,7 +23,7 @@ const ListingContainer = (props) => {
           {allListings}
         </div>
       </section>
-    );
+    )
 }
 
 export default ListingContainer
