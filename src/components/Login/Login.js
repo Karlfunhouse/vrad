@@ -34,6 +34,7 @@ export default class Login extends Component {
                   <input 
                     type='text' 
                     placeholder='username'
+                    id='username'
                     name='username' 
                     required
                     onChange={this.handleChange}
@@ -43,7 +44,8 @@ export default class Login extends Component {
                   <label htmlFor='email' className='input-label'>Email: </label>
                   <input 
                     type='email' 
-                    placeholder='email' 
+                    placeholder='email'
+                    id='email' 
                     name='email' 
                     required
                     onChange={this.handleChange}
@@ -51,8 +53,8 @@ export default class Login extends Component {
               </div>
               <div className='login-item'>
                   <label htmlFor='usage'>What do you need a place for?</label>
-                  <div className='login-usage'>
-                    <label>
+                  <div className='login-usage' id='usage'>
+                    <label htmlFor='business'>
                     <input 
                         type='radio' 
                         id='business' 
@@ -63,7 +65,7 @@ export default class Login extends Component {
                       />
                       Business:
                     </label>
-                    <label>
+                    <label htmlFor='vacation'>
                       <input 
                         type='radio' 
                         id='vacation' 
@@ -73,7 +75,7 @@ export default class Login extends Component {
                       />
                       Vacation
                     </label> 
-                    <label>
+                    <label htmlFor='party'>
                       <input 
                         type='radio' 
                         id='party' 
