@@ -4,9 +4,7 @@ import './AreaContainer.css'
 import Area from '../Area/Area'
 
 const AreaContainer = (props) => {
-  const areasInfo = props.areas.map(area => {
-      console.log(area);
-      
+  const areasInfo = props.areas.map(area => {     
     return <Area 
             area={area} 
             key={area.id} 
