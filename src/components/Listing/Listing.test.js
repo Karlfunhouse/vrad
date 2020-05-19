@@ -52,3 +52,4 @@ test("that the listing is rendering", () => {
 test('that the url pathway changes when user clicks button', () => {
   expect(location.pathname).toBe('/areas/rino/listings/3')
 })
+

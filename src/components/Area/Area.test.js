@@ -46,3 +46,7 @@ test("that displayListings has been called with listings", () => {
   fireEvent.click(getByText("See Listings"));
   expect(displayListings).toHaveBeenCalledWith(area.listings);
 });
+
+test("that the url pathway changes when user clicks button", () => {
+  expect(location.pathname).toBe("/areas/RiNo/listings");
+});
