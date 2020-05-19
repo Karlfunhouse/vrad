@@ -27,24 +27,23 @@ beforeEach(() => {
 
 afterEach(cleanup)
 
-test("component successfully renders", () => {
+test('component successfully renders', () => {
   const { getByText } = areaComponent
-  expect(getByText("about")).toBeInTheDocument()
+  expect(getByText(area.area)).toBeInTheDocument()
 })
 
-test("that displayListings has been clicked", () => {
+test('that displayListings has been clicked', () => {
   const { getByText } = areaComponent
-  fireEvent.click(getByText("See Listings"))
-  fireEvent.click(getByText("See Listings"))
-  expect(displayListings).toHaveBeenCalledTimes(2)
+  fireEvent.click(getByText('See Listings'))
+  expect(displayListings).toHaveBeenCalledTimes(1)
 })
 
-test("that displayListings has been called with listings", () => {
+test('that displayListings has been called with listings', () => {
   const { getByText } = areaComponent
-  fireEvent.click(getByText("See Listings"))
+  fireEvent.click(getByText('See Listings'))
   expect(displayListings).toHaveBeenCalledWith(area.listings)
 })
 
-test("that the url pathway changes when user clicks button", () => {
+test('that the url pathway changes when user clicks button', () => {
   expect(location.pathname).toBe(`/areas/${area.area}/listings`)
 })
