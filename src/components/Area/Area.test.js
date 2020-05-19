@@ -27,7 +27,7 @@ beforeEach(() => {
 
 afterEach(cleanup)
 
-test('component successfully renders', () => {
+test('<Area/> component successfully renders', () => {
   const { getByText } = areaComponent
   expect(getByText(area.area)).toBeInTheDocument()
 })

@@ -40,7 +40,7 @@ beforeEach(() => {
 
 afterEach(cleanup)
 
-test('component successfully renders', () => {
+test('<Listing/> component successfully renders', () => {
   const { getByText } = listingComponent
   expect(getByText(listing.name)).toBeInTheDocument()
 })
@@ -51,7 +51,7 @@ test('that displayListings has been clicked', () => {
   expect(displayListing).toHaveBeenCalledTimes(1);
 })
 
-test('that displayListin has been called with listing', () => {
+test('that displayListing has been called with listing', () => {
   const { getByText } = listingComponent
   fireEvent.click(getByText('See Details'));
   expect(displayListing).toHaveBeenCalledWith(listing);
