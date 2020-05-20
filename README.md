@@ -28,22 +28,22 @@ User should be able to:
 <img width="1434" alt="5" src="https://user-images.githubusercontent.com/57964291/82497664-e1681000-9aab-11ea-98f3-2b8b2ab7efd8.png">
 
 ### Technologies Used:
--React
--Create React App
--JavaScript
--CSS
--Fetch API
--Jest
--React Testing Library
+- React
+- Create React App
+- JavaScript
+- CSS
+- Fetch API
+- Jest
+- React Testing Library
 
 ### Learning Goals:
--Keep state based components to a minimum and leverage more functional components.
--Use a modular architecture for App file structure.
--Think deeply about React Lifecycle Methods.
--Become familiar with promises, nested fetch requests, and handling the UI based on acceptance of data.
--Become familiar with routing and how to handle dynamic routes.
--Use propTypes for every component receiving props.
--Write tests for React components and some asynchronous functionality.
+- Keep state based components to a minimum and leverage more functional components.
+- Use a modular architecture for App file structure.
+- Think deeply about React Lifecycle Methods.
+- Become familiar with promises, nested fetch requests, and handling the UI based on acceptance of data.
+- Become familiar with routing and how to handle dynamic routes.
+- Use propTypes for every component receiving props.
+- Write tests for React components and some asynchronous functionality.
 
 ### Install:
 1. Clone this repo
@@ -52,6 +52,6 @@ User should be able to:
 1. Open `localhost:3000` in your favorite browser
 
 ### Constributors:
-[Edita Ignot](https://github.com/edignot)
-[Karl Nielsen](https://github.com/Karlfunhouse)
+- [Edita Ignot](https://github.com/edignot)
+- [Karl Nielsen](https://github.com/Karlfunhouse)
 
