@@ -1,3 +1,5 @@
+import MutationObserver from "@sheerun/mutationobserver-shim";
+window.MutationObserver = MutationObserver;
 import React from 'react'
 import { render, cleanup, waitFor, fireEvent } from '@testing-library/react'
 import App from './App'
@@ -82,6 +84,8 @@ describe('App Component', () => {
         img: ['imgA', 'imgB', 'imgC']
       }
     ]
+    fetchAreas.mockResolvedValue(areas)
+    fetchListings.mockResolvedValue(listings)
     
     appComponent = render(
       <BrowserRouter>
@@ -89,12 +93,10 @@ describe('App Component', () => {
       </BrowserRouter>
     )
   })
-
+  
   afterEach(cleanup)
-
-  fetchAreas.mockResolvedValue(areas)
-  fetchListings.mockResolvedValue(listings)
-
+  
+  
   test('<App/> component fetched areas data', async () => {
       const { getByLabelText, getByText, debug } = appComponent
       await waitFor(() => {
@@ -102,10 +104,12 @@ describe('App Component', () => {
         fireEvent.change(getByLabelText('Email:'), {target: {value: 'email'}})
         fireEvent.click(getByLabelText('Business:'), {target: {value: 'business'}})
       })
-      // fireEvent.click(getByText('LOGIN'))
-      // const testing = await waitFor(() => getByText('name2'))
-      // testing.toBeInTheDocument()
+      fireEvent.click(getByText('LOGIN'))
+      const testing = await waitFor(() => getByText('area2'))
+      expect(testing).toBeInTheDocument()
   })
+
+  
 })
 
 

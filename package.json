@@ -15,7 +15,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jest-environment-jsdom-fourteen",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -34,7 +34,9 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/react": "^9.5.0",
+    "@sheerun/mutationobserver-shim": "^0.3.3",
+    "@testing-library/react": "^10.0.4",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
     "react-social-icons": "^4.1.0"
   }
 }
