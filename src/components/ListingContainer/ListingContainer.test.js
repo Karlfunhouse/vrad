@@ -66,6 +66,5 @@ describe("ListingContainer Component", () => {
   test("ListingContainer component renders correctly", () => {
     const { getByText } = listingContainerComponent
     expect(getByText("name2")).toBeInTheDocument()
-    console.log(location.pathname)
   })
 })

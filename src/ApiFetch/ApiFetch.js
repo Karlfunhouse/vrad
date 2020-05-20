@@ -16,8 +16,8 @@ export const fetchAreas = async () => {
           areasData.push(areaObject)
         })
         return areasData
-      } catch (e) {
-        console.log(e)
+      } catch (err) {
+        console.log(err)
       }
 }
 

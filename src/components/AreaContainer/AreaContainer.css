@@ -6,6 +6,13 @@
     grid-gap: 50px;
 }
 
+.error {
+    text-align: center;
+    margin: 50px;
+    font-size: 4rem;
+    color: #218fb1;
+}
+
 @media (min-width: 640px) {
     .area-container {
         grid-template: auto / repeat(2, 1fr);

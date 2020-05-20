@@ -12,9 +12,12 @@ const AreaContainer = (props) => {
         />
     })
     return (
-        <div className='area-container'>
-            { areasInfo }
-        </div>
+        <section>
+            <p className='error'>{props.error}</p>
+            <div className='area-container'>
+                { areasInfo }
+            </div>
+        </section>
     )
 }
 

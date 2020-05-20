@@ -22,19 +22,29 @@ export default class App extends Component {
                      areas: [],
                      listings: [],
                      listing: null,
+                     error: null
                    }
                  }
 
                  componentDidMount = async () => {
-                   this.setState({ areas: await fetchAreas() })
+                   const areasData = await fetchAreas()
+                   areasData && this.setState({ areas: areasData })
+                   !areasData && this.setState({ error: 'Oops, loading failed! :('})
                  }
 
                   displayListings = async (listings) => {
-                    this.setState({ listings: await fetchListings(listings) })
+                    const listingsData = await fetchListings(listings)
+                    console.log(listingsData)
+                    listingsData && this.setState({ listings: listingsData})
+                    !listingsData && this.setState({ error: 'Oops, loading failed! :('})
                   }
 
                  displayListing = (listing) => {
                    this.setState({ listing: listing })
+                 }
+
+                 removeError = () => {
+                   this.setState({error: null})
                  }
 
                  displayFavorites = (favoriteListings) => {}
@@ -85,6 +95,7 @@ export default class App extends Component {
                      usage,
                      favoriteListings,
                      areas,
+                     error
                    } = this.state
 
                    return (
@@ -119,6 +130,7 @@ export default class App extends Component {
                          render={() => {
                            return (
                              <AreaContainer
+                               error={error}
                                areas={areas}
                                displayListings={this.displayListings}
                              />
@@ -133,6 +145,8 @@ export default class App extends Component {
                              <ListingContainer
                                listings={listings}
                                displayListing={this.displayListing}
+                               error={error}
+                               removeError={this.removeError}
                              />
                            )
                          }}
@@ -147,7 +161,7 @@ export default class App extends Component {
                                displayListing={this.displayListing}
                              />
                            )
-                         }}
+                         }} 
                        />
                        <Route
                          path='/areas/:listing_id/listings/:listing_id'

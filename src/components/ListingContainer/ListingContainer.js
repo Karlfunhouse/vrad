@@ -16,9 +16,10 @@ const ListingContainer = (props) => {
       <section>
         <nav className='listing-container-nav'>
           <Link to='/areas'>
-              <button className='back-areas-btn'>Back To Areas</button>
+              <button className='back-areas-btn' onClick={props.removeError}>Back To Areas</button>
           </Link>
         </nav>
+        <p className='error'>{props.error}</p>
         <div className='listing-container'>
           {allListings}
         </div>
