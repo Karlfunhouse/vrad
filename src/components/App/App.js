@@ -12,32 +12,42 @@ import { fetchAreas, fetchListings } from '../../ApiFetch/ApiFetch'
 
 export default class App extends Component {
                  constructor() {
-                   super();
+                   super()
                    this.state = {
                      isLoggedIn: false,
-                     username: "",
-                     email: "",
-                     usage: "",
+                     username: '',
+                     email: '',
+                     usage: '',
                      favoriteListings: [],
                      areas: [],
                      listings: [],
                      listing: null,
-                   };
+                     error: null
+                   }
                  }
 
                  componentDidMount = async () => {
-                   this.setState({ areas: await fetchAreas() })
+                   const areasData = await fetchAreas()
+                   areasData && this.setState({ areas: areasData })
+                   !areasData && this.setState({ error: 'Oops, loading failed! :('})
                  }
 
                   displayListings = async (listings) => {
-                    this.setState({ listings: await fetchListings(listings) })
-                  };
+                    const listingsData = await fetchListings(listings)
+                    console.log(listingsData)
+                    listingsData && this.setState({ listings: listingsData})
+                    !listingsData && this.setState({ error: 'Oops, loading failed! :('})
+                  }
 
                  displayListing = (listing) => {
-                   this.setState({ listing: listing });
-                 };
+                   this.setState({ listing: listing })
+                 }
 
-                 displayFavorites = (favoriteListings) => {};
+                 removeError = () => {
+                   this.setState({error: null})
+                 }
+
+                 displayFavorites = (favoriteListings) => {}
 
                  checkLogin = (userInfo) => {
                    this.setState({
@@ -45,36 +55,36 @@ export default class App extends Component {
                      email: userInfo.email,
                      usage: userInfo.usage,
                      isLoggedIn: true,
-                   });
-                 };
+                   })
+                 }
 
                  logout = () => {
                    this.setState({
-                     username: "",
-                     email: "",
-                     usage: "",
+                     username: '',
+                     email: '',
+                     usage: '',
                      favoriteListings: [],
                      isLoggedIn: false,
-                   });
-                 };
+                   })
+                 }
 
                  addFavoriteListing = (listing) => {
-                   const newFavoriteListings = this.state.favoriteListings.slice();
+                   const newFavoriteListings = this.state.favoriteListings.slice()
                    let foundListing = newFavoriteListings.find(
                      (fave) => fave.listing_id === listing.listing_id
-                   );
+                   )
                    if (!foundListing) {
-                     listing.favorite = true;
-                     newFavoriteListings.push(listing);
+                     listing.favorite = true
+                     newFavoriteListings.push(listing)
                    } else {
-                     listing.favorite = false;
+                     listing.favorite = false
                      let index = newFavoriteListings.findIndex(
                        (i) => i.listing_id === listing.listing_id
-                     );
-                     newFavoriteListings.splice(index, 1);
+                     )
+                     newFavoriteListings.splice(index, 1)
                    }
-                   this.setState({ favoriteListings: newFavoriteListings });
-                 };
+                   this.setState({ favoriteListings: newFavoriteListings })
+                 }
 
                  render() {
                    const {
@@ -85,7 +95,8 @@ export default class App extends Component {
                      usage,
                      favoriteListings,
                      areas,
-                   } = this.state;
+                     error
+                   } = this.state
 
                    return (
                      <div>
@@ -101,44 +112,47 @@ export default class App extends Component {
                        )}
 
                        {!isLoggedIn ? (
-                         <Redirect to="/" />
+                         <Redirect to='/' />
                        ) : (
-                         <Redirect to="/areas" />
+                         <Redirect to='/areas' />
                        )}
 
                        <Route
-                         path="/"
+                         path='/'
                          exact
                          render={() => {
-                           return <Login checkLogin={this.checkLogin} />;
+                           return <Login checkLogin={this.checkLogin} />
                          }}
                        />
                        <Route
-                         path="/areas"
+                         path='/areas'
                          exact
                          render={() => {
                            return (
                              <AreaContainer
+                               error={error}
                                areas={areas}
                                displayListings={this.displayListings}
                              />
-                           );
+                           )
                          }}
                        />
                        <Route
-                         path="/areas/:area/listings"
+                         path='/areas/:area/listings'
                          exact
                          render={() => {
                            return (
                              <ListingContainer
                                listings={listings}
                                displayListing={this.displayListing}
+                               error={error}
+                               removeError={this.removeError}
                              />
-                           );
+                           )
                          }}
                        />
                        <Route
-                         path="/favorites"
+                         path='/favorites'
                          exact
                          render={() => {
                            return (
@@ -146,11 +160,11 @@ export default class App extends Component {
                                listings={favoriteListings}
                                displayListing={this.displayListing}
                              />
-                           );
-                         }}
+                           )
+                         }} 
                        />
                        <Route
-                         path="/areas/:listing_id/listings/:listing_id"
+                         path='/areas/:listing_id/listings/:listing_id'
                          exact
                          render={() => {
                            return (
@@ -158,10 +172,10 @@ export default class App extends Component {
                                listing={listing}
                                addFavoriteListing={this.addFavoriteListing}
                              />
-                           );
+                           )
                          }}
                        />
                      </div>
-                   );
+                   )
                  }
                }

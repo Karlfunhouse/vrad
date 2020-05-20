@@ -4,7 +4,7 @@ import './AreaContainer.css'
 import Area from '../Area/Area'
 
 const AreaContainer = (props) => {
-  const areasInfo = props.areas.map(area => {
+  const areasInfo = props.areas.map(area => {     
     return <Area 
             area={area} 
             key={area.id} 
@@ -12,9 +12,12 @@ const AreaContainer = (props) => {
         />
     })
     return (
-        <div className='area-container'>
-            { areasInfo }
-        </div>
+        <section>
+            <p className='error'>{props.error}</p>
+            <div className='area-container'>
+                { areasInfo }
+            </div>
+        </section>
     )
 }
 

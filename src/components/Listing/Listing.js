@@ -14,9 +14,9 @@ const Listing = (props) => {
             alt=''
           />
           <h2 className={favorite ? 'listing-name-favorite' : 'listing-name'}>
-            {favorite && "\u2764 "}
+            {favorite && '\u2764 '}
             {name}
-            {favorite && " \u2764"}
+            {favorite && ' \u2764'}
           </h2>
           <p className='listing-address'>{street}, {zip}, Denver</p>
          <Link 
