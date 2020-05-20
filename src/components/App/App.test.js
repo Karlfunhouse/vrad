@@ -1,3 +1,5 @@
+import MutationObserver from "@sheerun/mutationobserver-shim";
+window.MutationObserver = MutationObserver;
 import React from 'react'
 import { render, cleanup, waitFor, fireEvent } from '@testing-library/react'
 import App from './App'
@@ -22,16 +24,16 @@ describe('App Component', () => {
         quick_search: '1',
         region_code: 1,
       },
-      {
-        about: 'about2',
-        area: 'area2',
-        id: 2,
-        listings: ['/a', '/b'],
-        location: 'location2',
-        name: 'name2',
-        quick_search: '2',
-        region_code: 2,
-      }
+      // {
+      //   about: 'about2',
+      //   area: 'area2',
+      //   id: 2,
+      //   listings: ['/a', '/b'],
+      //   location: 'location2',
+      //   name: 'name2',
+      //   quick_search: '2',
+      //   region_code: 2,
+      // }
     ]
 
     listings = [
@@ -82,6 +84,8 @@ describe('App Component', () => {
         img: ['imgA', 'imgB', 'imgC']
       }
     ]
+    fetchAreas.mockResolvedValue(areas)
+    fetchListings.mockResolvedValue(listings)
     
     appComponent = render(
       <BrowserRouter>
@@ -89,22 +93,33 @@ describe('App Component', () => {
       </BrowserRouter>
     )
   })
-
+  
   afterEach(cleanup)
-
-  fetchAreas.mockResolvedValue(areas)
-  fetchListings.mockResolvedValue(listings)
-
-  test('<App/> component fetched areas data', async () => {
-      const { getByLabelText, getByText, debug } = appComponent
+  
+  
+  test('<App/> component can navigate to and display fetched areas data', async () => {
+      const { getByLabelText, getByText} = appComponent
       await waitFor(() => {
         fireEvent.change(getByLabelText('Username:'), {target: {value: 'user'}})
         fireEvent.change(getByLabelText('Email:'), {target: {value: 'email'}})
         fireEvent.click(getByLabelText('Business:'), {target: {value: 'business'}})
       })
-      // fireEvent.click(getByText('LOGIN'))
-      // const testing = await waitFor(() => getByText('name2'))
-      // testing.toBeInTheDocument()
+      fireEvent.click(getByText('LOGIN'))
+      const foundArea = await waitFor(() => getByText('area'))
+      expect(foundArea).toBeInTheDocument()
+  })
+
+  test('That <App /> can navigate to listings', async () => {
+    const { getByLabelText, getByText, debug } = appComponent
+    await waitFor(() => {
+        fireEvent.change(getByLabelText('Username:'), {target: {value: 'user'}})
+        fireEvent.change(getByLabelText('Email:'), {target: {value: 'email'}})
+        fireEvent.click(getByLabelText('Business:'), {target: {value: 'business'}})
+      })
+      fireEvent.click(getByText('LOGIN'))
+      fireEvent.click(getByText('See Listings'))
+      const foundListing = await waitFor(() => getByText('name'))
+      expect(foundListing).toBeInTheDocument()
   })
 })
 
