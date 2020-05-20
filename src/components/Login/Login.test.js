@@ -5,6 +5,7 @@ import Login from './Login'
 describe('Login Component', () => {
   const checkLogin = jest.fn()
   let loginComponent
+  
   beforeEach(() => {
     loginComponent = render(<Login checkLogin={checkLogin}/>)
   })

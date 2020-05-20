@@ -7,6 +7,7 @@ describe('Listing Component', () => {
   const displayListing = jest.fn()
   let listingComponent
   let listing
+  
   beforeEach(() => {
     listing = {
       listing_id: 1,
@@ -31,6 +32,7 @@ describe('Listing Component', () => {
       favorite: false,
       img: ['img1', 'img2', 'img3']
     }
+    
     listingComponent = render(
       <BrowserRouter>
         <Listing listing={listing} displayListing={displayListing} />

@@ -7,6 +7,7 @@ describe("ListingContainer Component", () => {
   let listingContainerComponent
   let listings
   let displayListing = jest.fn()
+  
   beforeEach(() => {
     listings = [
       {
@@ -56,6 +57,7 @@ describe("ListingContainer Component", () => {
         img: ["imgA", "imgB", "imgC"],
       },
     ]
+    
     listingContainerComponent = render(
       <BrowserRouter>
         <ListingContainer listings={listings} displayListing={displayListing} />
