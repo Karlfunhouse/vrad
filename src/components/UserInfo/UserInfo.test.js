@@ -3,8 +3,7 @@ import { render, cleanup, fireEvent } from '@testing-library/react'
 import UserInfo from './UserInfo'
 import { BrowserRouter } from 'react-router-dom'
 
-describe('User component', () => {
-  let userInfoComponent
+describe('UserInfo component', () => {
   let username
   let usage
   let favoriteListings
@@ -38,44 +37,72 @@ describe('User component', () => {
     }]
 
     
-    userInfoComponent = render(
-      <BrowserRouter>
-        <UserInfo 
-        username={username} 
-        usage={usage} 
-        favoriteListings={favoriteListings} 
-        logout={logout} />
-      
-      </BrowserRouter>
-    )
+  
   })
 
    afterEach(cleanup)
   
    test('component renders without crashing', () => {
-     const { getByText } = userInfoComponent
+     const { getByText } = render(
+         <BrowserRouter>
+           <UserInfo
+             username={username}
+             usage={usage}
+             favoriteListings={favoriteListings}
+             logout={logout}
+           />
+         </BrowserRouter>
+       );
      expect(getByText('Logout')).toBeInTheDocument()
    })
 
    test('When clicking on Logout button it fires logout method', () => {
-     const { getByText } = userInfoComponent
+     const { getByText } = render(
+         <BrowserRouter>
+           <UserInfo
+             username={username}
+             usage={usage}
+             favoriteListings={favoriteListings}
+             logout={logout}
+           />
+         </BrowserRouter>
+       );
     fireEvent.click(getByText('Logout'))
     expect(logout).toHaveBeenCalledTimes(1)
    })
 
    test('When user logs out, path changes to /', () => {
-      const { getByText } = userInfoComponent
+
+      const { getByText } = render(
+         <BrowserRouter>
+           <UserInfo
+             username={username}
+             usage={usage}
+             favoriteListings={favoriteListings}
+             logout={logout}
+           />
+         </BrowserRouter>
+       );
       fireEvent.click(getByText('Logout'))
       expect(location.pathname).toBe('/')
    })
 
    test('When user clicks on Favorite Listings button, path changes to /favorites', () => {
-     const { getByTestId } = userInfoComponent
+        const { getByTestId } = render(
+         <BrowserRouter>
+           <UserInfo
+             username={username}
+             usage={usage}
+             favoriteListings={favoriteListings}
+             logout={logout}
+           />
+         </BrowserRouter>
+       );
      fireEvent.click(getByTestId('Favorite Button'))
      expect(location.pathname).toBe('/favorites')
    })
 
-   test('When user clicks on Favorite Listings button, path changes to /favorites', () => {
+   test('When user has no favorites saved, the Favorite button is disabled', () => {
      cleanup()
      const { getByTestId } = render(
      <BrowserRouter>

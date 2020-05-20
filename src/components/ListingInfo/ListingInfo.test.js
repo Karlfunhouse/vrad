@@ -5,7 +5,6 @@ import { BrowserRouter } from 'react-router-dom'
 
 describe('ListingInfo Component', () => {
   const addFavoriteListing = jest.fn(() => true)
-  let listingInfoComponent
   let listing
   
   beforeEach(() => {
@@ -33,51 +32,68 @@ describe('ListingInfo Component', () => {
       img: ['img1', 'img2', 'img3']
     }
 
-    listingInfoComponent = render(
-      <BrowserRouter>
-        <ListingInfo listing={listing} addFavoriteListing={addFavoriteListing}/>
-      </BrowserRouter>
-    )
+   
   })
   
-  afterEach(cleanup)
+  // afterEach(cleanup)
   
   test('<ListingInfo/> component successfully renders', () => {
-    const { getByText } = listingInfoComponent
+    const { getByText } = render(
+      <BrowserRouter>
+        <ListingInfo 
+        listing={listing} 
+        addFavoriteListing={addFavoriteListing}/>
+      </BrowserRouter>
+    )
     expect(getByText(listing.name)).toBeInTheDocument()
   })
   
   test('that listing is added/removed from favorites when clicking favorite button', () => {
-    const { getByText } = listingInfoComponent
+    const { getByText, debug } = render(
+      <BrowserRouter>
+        <ListingInfo 
+        listing={listing} 
+        addFavoriteListing={addFavoriteListing}/>
+      </BrowserRouter>
+    )
     expect(getByText('\u2764 Add to Favorites')).toBeInTheDocument()
     fireEvent.click(getByText('\u2764 Add to Favorites'))
     listing.favorite = addFavoriteListing()
-    cleanup()
-    render(
+  })
+
+  test('that the listing is removed from favorites when clicking favorite button', () => {
+    const { getByText } = render(
       <BrowserRouter>
-        <ListingInfo listing={listing} addFavoriteListing={addFavoriteListing} />
+        <ListingInfo
+          listing={listing}
+          addFavoriteListing={addFavoriteListing}
+        />
       </BrowserRouter>
     )
-    expect(getByText('\u2764 Remove from Favorites')).toBeInTheDocument()
-    fireEvent.click(getByText('\u2764 Remove from Favorites'))
-    listing.favorite = !addFavoriteListing()
-    cleanup()
-    render(
-      <BrowserRouter>
-        <ListingInfo listing={listing} addFavoriteListing={addFavoriteListing} />
-      </BrowserRouter>
-    )
-    expect(getByText('\u2764 Add to Favorites')).toBeInTheDocument()
+    fireEvent.click(getByText("\u2764 Add to Favorites"));
+    expect(getByText("\u2764 Remove from Favorites")).toBeInTheDocument();
   })
   
   test('that the url pathway changes when user clicks Back To Listing button', () => {
-    const { getByText } = listingInfoComponent
+    const { getByText } = render(
+      <BrowserRouter>
+        <ListingInfo 
+        listing={listing} 
+        addFavoriteListing={addFavoriteListing}/>
+      </BrowserRouter>
+    )
     fireEvent.click(getByText('Back To Listings'))
     expect(location.pathname).toBe(`/areas/${listing.area}/listings`)
   })
   
   test('that the url pathway changes when user clicks Back To Areas button', () => {
-    const { getByText } = listingInfoComponent
+    const { getByText } = render(
+      <BrowserRouter>
+        <ListingInfo 
+        listing={listing} 
+        addFavoriteListing={addFavoriteListing}/>
+      </BrowserRouter>
+    )
     fireEvent.click(getByText('Back To Areas'))
     expect(location.pathname).toBe('/areas')
   })
