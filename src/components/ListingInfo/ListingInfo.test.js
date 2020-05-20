@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 describe('ListingInfo Component', () => {
   const addFavoriteListing = jest.fn(() => true)
   let listing
+  let listing1
   
   beforeEach(() => {
     listing = {
@@ -31,11 +32,34 @@ describe('ListingInfo Component', () => {
       favorite: false,
       img: ['img1', 'img2', 'img3']
     }
+    listing1 = {
+      listing_id: 1,
+      area_id: 1,
+      name: "name",
+      address: {
+        street: "street",
+        zip: 11111,
+      },
+      details: {
+        neighborhood_id: 1,
+        superhost: true,
+        seller_source: "seller_source",
+        beds: 1,
+        baths: 1,
+        cost_per_night: 1,
+        features: ["feature1", "feature2"],
+      },
+      dev_id: "dev_id",
+      area: "area",
+      db_connect: 1,
+      favorite: true,
+      img: ["img1", "img2", "img3"],
+    };
 
    
   })
   
-  // afterEach(cleanup)
+  afterEach(cleanup)
   
   test('<ListingInfo/> component successfully renders', () => {
     const { getByText } = render(
@@ -49,7 +73,7 @@ describe('ListingInfo Component', () => {
   })
   
   test('that listing is added/removed from favorites when clicking favorite button', () => {
-    const { getByText, debug } = render(
+    const { getByText } = render(
       <BrowserRouter>
         <ListingInfo 
         listing={listing} 
@@ -61,17 +85,18 @@ describe('ListingInfo Component', () => {
     listing.favorite = addFavoriteListing()
   })
 
-  test.skip('that the listing is removed from favorites when clicking favorite button', () => {
+  test('that the listing is removed from favorites when clicking favorite button', () => {
+    
     const { getByText } = render(
       <BrowserRouter>
         <ListingInfo
-          listing={listing}
+          listing={listing1}
           addFavoriteListing={addFavoriteListing}
-        />
+          />
       </BrowserRouter>
     )
-    fireEvent.click(getByText("\u2764 Add to Favorites"));
     expect(getByText("\u2764 Remove from Favorites")).toBeInTheDocument();
+    
   })
   
   test('that the url pathway changes when user clicks Back To Listing button', () => {
