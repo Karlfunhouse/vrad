@@ -4,11 +4,10 @@ import ListingInfo from './ListingInfo'
 import { BrowserRouter } from 'react-router-dom'
 
 describe('ListingInfo Component', () => {
-
   const addFavoriteListing = jest.fn(() => true)
-
   let listingInfoComponent
   let listing
+  
   beforeEach(() => {
     listing = {
       listing_id: 1,
@@ -33,6 +32,7 @@ describe('ListingInfo Component', () => {
       favorite: false,
       img: ['img1', 'img2', 'img3']
     }
+
     listingInfoComponent = render(
       <BrowserRouter>
         <ListingInfo listing={listing} addFavoriteListing={addFavoriteListing}/>

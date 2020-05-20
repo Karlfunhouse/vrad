@@ -7,6 +7,7 @@ describe('AreaContainer Component', () => {
   let areaContainerComponent
   let areas
   let displayListings = jest.fn()
+  
   beforeEach(() => {
     areas = [
       {
@@ -30,6 +31,7 @@ describe('AreaContainer Component', () => {
         region_code: 2,
       }
     ]
+    
     areaContainerComponent = render(
         <BrowserRouter>
           <AreaContainer
@@ -43,6 +45,5 @@ describe('AreaContainer Component', () => {
   test('AreaContainer component renders correctly', () => {
     const { getByText } = areaContainerComponent
     expect(getByText('about2')).toBeInTheDocument()
-  }) 
-  
+  })  
 })
