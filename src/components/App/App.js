@@ -34,7 +34,6 @@ export default class App extends Component {
 
   displayListings = async (listings) => {
     const listingsData = await fetchListings(listings)
-    console.log(listingsData)
     listingsData && this.setState({ listings: listingsData }) 
     !listingsData && this.setState({ error: 'Oops, loading failed! :(' })
   }
